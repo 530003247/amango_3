@@ -1,0 +1,29 @@
+<div id="nav">
+	<ul class="navlist">
+    	<li id="n_0">
+    	<span ></span>
+        	<ul class="submenu">
+<volist name='shoplist' id='vo' >
+             <li>
+			    <a href="{:U('Article/index?category='.$vo['name'])}" class="f12 filter">{$vo.title}</a>
+			 </li>
+</volist>
+            </ul>
+        </li>
+        <li class="r active" id="n_1"><a href="{:U('User/bookprofile')}"><span></span></a></li>
+        <li class="r" id="n_3"><a href="{:U('User/bookcart')}"><span></span></a><i></i></li>
+		<li class="r" id="n_2"><a href="{:U('User/profile')}"><span></span></a></li>
+    </ul>
+    <script type="text/javascript">
+    	$(".navlist > li#n_0").click(function(){
+			$(this).toggleClass("active");
+		});
+		$(".navlist > li.r a").each(function() {
+            href="index.php-app=member&act=login&ret_url=-index.php-app=member.htm"+$(this).attr("href");
+			whref=window.location.href;
+			if(whref.indexOf(href)!='-1'){
+				$(this).parent("li").addClass("active");
+			}
+        });
+    </script>
+</div>

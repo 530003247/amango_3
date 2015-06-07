@@ -1,0 +1,55 @@
+<extend name="Base/common"/>
+<block name="diystyle">
+  <style>
+.blog-meta,.blog-title{margin:10px 0 20px}@media only screen and (min-width:1200px){.blog-g-fixed{max-width:1200px}}@media only screen and (min-width:641px){.blog-sidebar{font-size:1.4rem}}.blog-main{padding:20px 0}.blog-meta{font-size:14px;color:#222}.blog-meta a{color:#27ae60}.blog-pagination a{font-size:1.4rem}.blog-team li{padding:4px}.blog-team img{margin-bottom:0}.footer p{color:#7f8c8d;margin:0;padding:15px 0;text-align:center;background:#2d3e50}.blog-footer{padding:10px 0;text-align:center}.am-article-title{font-size:2rem;font-weight:700;margin:0}.col-lg-12{height:auto}
+  </style>
+</block>
+<block name="body">
+<div class="col-md-8">
+    <article class="blog-main">
+      <h2 class="am-article-title blog-title">
+        <a href="#" style="border-left: 3px solid #3bb4f2;padding: 0 1em;
+margin-top: .4em;
+margin-bottom: .4em;">{$info.title}</a>
+      </h2>
+<!--      <h4 class="am-article-meta blog-meta">by <a href="">{$info.uid|get_username}</a> 发布于 {$info.create_time|date='Y-m-d H:i',###}</h4>  -->
+      <div style="margin:5 0 10px 0;">
+      <span style="font-size:1.2rem;color:#8C8C8C;margin:0 10px 10px 0;">{$info.create_time|date='Y-m-d',###}</span>
+<!--      <span style="font-size:1.2rem;color:#46C1EC;margin:0 10px 0 0;">{$info.uid|get_username}</span>  -->
+      <span style="font-size:1.2rem;color:#607FA6;margin:0 10px 0 0;"><a style="color:#607FA6;" href="{$accountsub}">{:C('WEB_SITE_TITLE')}</a></span> 
+      </div>
+      <div class="am-g blog-content">
+        <div class="col-lg-12">
+{$info.content}
+        </div>
+      </div>
+    </article>
+
+	
+    
+    <hr class="am-article-divider blog-hr">
+<!--
+    <ul class="am-pagination blog-pagination">
+					<article:prev name="prev" info="info">
+                        <li class="am-pagination-next"><a href="{:U('?id='.$prev['id'])}">下一篇</a></li>
+                    </article:prev>
+                    <article:next name="next" info="info">
+                        <li class="am-pagination-prev"><a href="{:U('?id='.$next['id'])}">上一篇</a></li>
+                    </article:next>
+    </ul>
+-->
+ <!-- UY BEGIN 
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1967783"></script>
+ UY END -->
+    <hr class="am-article-divider blog-hr">
+        {:hook('documentDetailAfter',$info)}
+  </div>
+
+<div class="col-md-4 blog-sidebar">
+    <div class="am-panel-group">
+<include file="Public/detail_right"/>
+<include file="Public/qr"/>
+    </div>
+  </div>
+</block>

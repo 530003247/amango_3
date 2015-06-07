@@ -1,0 +1,34 @@
+.sendInfo,.sendNav{background-color:#fafafa;overflow:hidden;border-bottom:1px solid #e9e9e9}.sendInfo{padding:10px
+105px 10px 15px}.address,.sendBtn,.cancelNewBtn{line-height:24px}.sendOperBtn{right:15px;top:10px}.sendBtn,.cancelNewBtn{padding:0
+8px;display:inline-block}.sendBtn{height:24px;background-color:#8ec46c;border:1px
+solid #8ec46c;line-height:24px}.cancelNewBtn{height:24px;background-color:#fafafa;border:1px
+solid #e9e9e9;line-height:24px}.disable{background-color:#b6b6b6}.sendCon,.sendRCon{padding:10px
+15px;background-color:#fff;overflow:hidden}.sendCon{height:160px}@media screen and (min-height: 500px) and (max-height: 640px){.sendCon{height:210px}}@media screen and (min-height: 640px){.sendCon{height:280px}}.sendRCon{height:120px}@media screen and (min-height: 500px) and (max-height: 640px){.sendRCon{height:170px}}@media screen and (min-height: 640px){.sendRCon{height:240px}}.sInput{width:100%;height:100%;border:none;line-height:21px;resize:none}.tagCon
+.sInput{text-indent:78px}.tagCon .sInput::-webkit-input-placeholder{text-indent:78px}.sendNav{padding:10px
+0;border-top:1px solid #e9e9e9;overflow:hidden}.sendNav
+ul{width:100%;display:-moz-box;display:-webkit-box;display:box}.sendNav
+li{-moz-box-flex:1;-webkit-box-flex:1;box-flex:1;line-height:24px;text-align:center}.sendNav
+input{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;outline:0
+none;border:none}.iconExpression:before{content:"\e609"}.iconSendTag:before{content:"\e632"}.iconSendImg:before{content:"\e633"}.iconAdd:before{content:"\e012"}.iconVideo{width:24px;height:24px;margin:0
+auto;background:url(./quan/images/videoIcon.png) no-repeat;background-size:24px auto}.iconVideoOn{background-position:0 -24px}.sendNav
+.on{color:#178eee}.sendNav
+.fail{color:#e2e2e2}.sendNum{display:inline-block;margin-right:10px}.photoList,.praiseTips{padding:10px
+15px;background-color:#fff;overflow:hidden}.photoList{padding-top:15px}.photoList
+li{float:left;margin:0
+12px 15px 0;position:relative}.photoList .on,.maskLay{width:60px;height:60px}.pSpace .photoList,.pSpace
+.praiseTips{background-color:#ebebeb}.photoCut{width:60px;height:60px;overflow:hidden}.photoCut
+img{height:60px}.photoList
+.on{background:#d9d9d9 url(./quan/images/sprBg.png) no-repeat -244px -4px;cursor:pointer}.cBtn{width:22px;height:22px;background:url(./quan/images/sprNewBg.png) no-repeat;background-size:316px auto;-webkit-background-size:316px auto;font-size:0}.cBtn{right:-10px;top:-10px}.cBtnOn{background-image:url(./quan/images/sprNewBg.png);background-position:-22px 0}.maskLay{position:absolute;left:0;top:0;-moz-opacity:0.6;opacity:0.6;background-color:#000}.progress{width:34px;height:5px;padding:2px
+2px 0;position:absolute;left:11px;top:27px;background-color:#000;filter:alpha(opacity=60);opacity:0.6}.proBar{height:3px;background-color:#fff}.curImg,.curVideo{background-color:#d9d9d9;cursor:pointer}.curImg .iconJoin:before,.iconMicroVideo:before{font-size:25px}.curImg .iconJoin,.iconMicroVideo{margin:15px
+0 0 17px;color:#FFF}.photoList
+.imv{bottom:2px;left:-14px}.iconMicroVideo:before{content:"\e020"}.iconJoin:before{content:"\e802"}.textTip{width:100%;line-height:21px;color:#afafaf;clear:both}.praiseTips{line-height:25px;color:#8d8d8d}.microVideoBox,.microVideoCon,.microVideoList
+li{overflow:hidden}.microVideoTab{padding:10px;background-color:#f5f5f5;border-bottom:1px solid #e5e5e5}.microVideoCon{width:170px;height:24px;background-color:#fff;border:1px
+solid #178eee;margin:0
+auto}.microVideoCon
+a{display:block;width:85px;;height:24px;float:left;line-height:24px;text-align:center;color:#178eee}.microVideoCon
+.on{background-color:#178eee;color:#fff}.mvClose{width:24px;height:24px;right:10px;top:11px;background-color:#b6b6b6;line-height:24px;text-align:center}.microVideoList{height:260px;overflow-x:hidden;overflow-y:auto}.microVideoList
+li{height:45px;padding:10px
+65px 10px 10px;border-bottom:1px solid #e5e5e5;background-color:#fff;position:relative}.microVideoList
+.on{background-color:#f5f5f5}.microVideoList .on .mvDate,.microVideoList .on .mvText,.microVideoList .on
+.iconSelect{color:#3b6cb3}.mvImg{width:45px;height:45px;margin-right:10px}.mvDate{line-height:28px}.mvDate
+i{font-style:normal}.mvText{font-weight:normal;font-size:16px;line-height:22px}.iconDefault,.iconSelect{position:absolute;right:15px;top:21px}.iconSelect{font-size:25px;right:13px;top:18px}.iconDefault:before{content:"\e634"}.iconSelect:before{content:"\e011"}

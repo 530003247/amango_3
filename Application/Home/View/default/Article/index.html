@@ -1,0 +1,76 @@
+<!--  统一风格  采用模板渲染 插件通用模板addons 默认已加载 请参考 Amaze UI的css框架 -->
+<extend name="Base/common"/>
+<block name="diystyle">
+  <style>@media only screen and (min-width:1200px){.blog-g-fixed{max-width:1200px}}@media only screen and (min-width:641px){.blog-sidebar{font-size:1.4rem}}.blog-main{padding:20px 0}.blog-title{margin:10px 0 20px 0}.blog-meta{font-size:14px;margin:10px 0 20px 0;color:#222}.blog-meta a{color:#27ae60}.blog-pagination a{font-size:1.4rem}.blog-team li{padding:4px}.blog-team img{margin-bottom:0}.footer p{color:#7f8c8d;margin:0;padding:15px 0;text-align:center;background:#2d3e50}.blog-footer{padding:10px 0;text-align:center}@media only screen and (min-width:641px){.img-album{height:380px}}@media only screen and (max-width:640px){.img-album{}}.am-list-thumb{max-height:140px;overflow:hidden}.am-list{margin:0;background-color:#FFF}.am-list-news{margin:0 0 10px 0}.am-list-item-thumb-left{padding:10px}.walltitle{color:white;}
+  
+  body{
+    background-image: url(__PUBLIC__/amui/home/img/bg6.jpg);
+    background-size: 100% auto;
+	}
+	.am-g .am-g {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    width: auto;
+}
+
+.am-gallery li
+{
+height:30%;
+}
+
+.am-g-fixed, .am-gallery-item, .am-gallery-overlay ,.am-gallery-overlay .am-gallery-item img {
+    height: 100%;
+}
+
+div#main-div{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:99;
+}
+.am-slider
+{
+height:30%;
+overflow:hidden;
+}
+.am-slider img
+{
+height:100%;
+}
+  </style>
+</block>
+<block name="body">
+<div id="main-div">
+<div class="am-g am-g-fixed blog-g-fixed " >
+
+ <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}'>
+<ul class="am-slides">
+ <article:list name="article" category="$category['id']" child="true" row="4">
+ <li class="img-album">
+   <a href="{:U('Article/'.$article['id'])}"><img src="{$article.cover_id}" alt="{$article.title}！" draggable="false" /></a>
+  </li>
+ </article:list>
+</ul>
+</div>
+
+
+<div style="margin: 20px 0px;">  </div>
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-2
+  md-block-grid-2 lg-block-grid-2 am-gallery-overlay" data-am-gallery="{ pureview: false }">
+<article:categorygroup name="article" id="$category['id']">
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:U('Articles/'.$article['name'])}">
+        <img src="{$article.icon}"alt="{$article.title}"/>
+        <h3 class="am-gallery-title" align="center">{$article.title}</h3>
+      </a>
+    </div>
+  </li>
+</article:categorygroup>
+</ul>
+
+</div>
+</div>
+</block>

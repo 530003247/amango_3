@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="http://dzqun.gtimg.cn/quan/images/favicon.ico">
+    <title>{:C('WEB_SITE_TITLE')}-微社区</title>
+<link rel="stylesheet" href="__PUBLIC__/amui/amui.all.min.css"/>
+<link rel="stylesheet" href="__PUBLIC__/amui/wsqstyle.css">
+<link rel="stylesheet" href="__PUBLIC__/amui/wsqpost.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/amui/gmu/assets/widget/panel/panel.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/amui/gmu/assets/widget/slider/slider.css" />
+
+<script src="__PUBLIC__/amui/gmu/zepto.js"></script>
+<script src="__PUBLIC__/amui/amuiwsq.min.js?t={:time()}"></script>
+<!--- 侧滑面板 -->
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/extend/touch.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/extend/throttle.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/extend/event.scrollStop.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/extend/event.ortchange.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/extend/matchMedia.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/core/gmu.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/core/event.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/core/widget.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/widget/panel/panel.js"></script>
+<!--- 下拉加载--->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/amui/gmu/assets/loading.default.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/amui/gmu/assets/widget/refresh/refresh.default.css" />
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/widget/refresh/refresh.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/amui/gmu/src/widget/refresh/$lite.js"></script>   <!--向上拉动插件-->
+<style type="text/css">
+.pt {
+padding-top: 0px;
+}
+.hide{
+  display:none;
+}
+.show{
+
+}
+.amango_editorheight{
+
+}
+.sBg {
+min-height: 0;
+height: 28px;
+margin-bottom: 10px;
+border-bottom: 1px solid #e9e9e9;
+line-height: 25px;
+overflow: hidden;
+}
+.customTag a {
+    margin: 5px;
+}
+.dCon {
+    line-height: 23px;
+    max-height: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+	margin:10px auto;
+}
+#readall
+{
+display:none;
+}
+</style>
+</head>
+<body class="pt pb am-g" style="zoom: 1;">
+<div class="ui-refresh">
+<div class="tipInfo" style="display:none;width: 100%;position: fixed;" id="showShare">
+    <p class="tipBor" style="float: right;">喜欢这个{$Title},请点击右上角图标分享<span class="arrLeft"></span></p>
+</div>
+
+<div id="fwin_mask_replyForm" class="g-mask hide" style="position:absolute;top:-0px;left:-0px;width:100%;height:100%;background:#000;filter:alpha(opacity=60);opacity:0.5; z-index:100011;"></div>
+<div class="popLayer pSpace brNone hide"style="width:100%;position: absolute;z-index:100020;" id="amango_editor">
+<div class="sendInfo wot pr">
+            <span class="locationCon address f13 c9" closestatus="1">
+			   <i class="iconloc f16 c9 cf"></i><span id="replytz_title">回复:</span>
+			</span>
+        </div>
+<form method="post"action="{:U('Article/reply')}"id="replyForm">
+<input type="hidden"name="documentid" id="replytz_id" value="">
+<div class="sendRCon pr">
+<div id="hidenparam" class="hide"></div>
+<input type="hidden" id="category_id" name="" value="{$category_id}">
+<input type="hidden" id="model_id" name="" value="{$model_id}">
+
+<input id="sendtitle" type="text" class="sInput sBg hide" placeholder="标题（必填）" maxlength="80">
+<textarea id="content"name="content"cols=""rows=""class="sInput f13"placeholder="小主,说两句吧..."></textarea>
+<div id="uppics" class='hiden'>
+</div>
+</div>
+<div class="sendNav">
+<ul>
+<li><a data-id='0' class="operatIcon iconExpression f21 db c9 cf"></a></li>
+<!--回复关闭  发帖开启--->
+<li class="pr uploadPicBox"><a data-id='1' class="operatIcon iconSendImg db f21 c9 cf pr"style="z-index:1;"></a>
+</li>
+<li>&nbsp;</li>
+<li>&nbsp;</li>
+<li><a id="amango_editor_cancel" class="cancelNewBtn brSmall f13 db fr c3 close">取消</a></li>
+<li><input type="submit" value="发送" class="sendBtn brSmall f13 db c2"></li>
+</ul>
+</form>
+</div>
+<div class="operatingBox">
+    <div class="operatList tipLayer"style="margin:0;border:0;"></div>
+ <!--回复关闭  发帖开启--->
+  <div class="operatList photoTipsBox hide"style="height:121px;background-color:#efefef;border-top:1px solid #e2e2e2;">
+    <div class="photoList">
+     <ul id="uploadpicslist">
+<li class="on"id="addPic">
+     <input type="file"class="on needsclick"style="z-index:200;opacity:0;filter:alpha(opacity=0);-ms-filter:'alpha(opacity=0)';">
+</li>
+       </ul>
+<p class="textTip f12" align="center">还可上传<span id="onlyUploadNum">8</span>张照片呦~</p>
+    </div>
+   </div>
+   <!--回复关闭  发帖开启--->
+</div>
+</form>
+
+<!--表情-->
+<div class="operatingBox hide">
+<div class="operatList tipLayer"style="margin: 0px; border: 0px; display: block;">
+<div class="expreBox"style=""id="expreBox">
+<div class="expreList"id="expreList">
+<ul class="expreCon expreConNew" boxid="0" id="exp_emo0"style="position: relative;left: 0px;" scrolleft="0">
+<li class="bg1"style="background-position: 50% 50%;">
+<a href="javascript:;"title="微笑"></a><a href="javascript:;"title="撇嘴"></a><a href="javascript:;"title="色"></a><a href="javascript:;"title="发呆"></a><a href="javascript:;"title="得意"></a><a href="javascript:;"title="流泪"></a><a href="javascript:;"title="害羞"></a><a href="javascript:;"title="闭嘴"></a><a href="javascript:;"title="睡"></a><a href="javascript:;"title="大哭"></a><a href="javascript:;"title="尴尬"></a><a href="javascript:;"title="发怒"></a><a href="javascript:;"title="调皮"></a><a href="javascript:;"title="呲牙"></a><a href="javascript:;"title="惊讶"></a><a href="javascript:;"title="难过"></a><a href="javascript:;"title="酷"></a><a href="javascript:;"title="冷汗"></a><a href="javascript:;"title="抓狂"></a><a href="javascript:;"title="吐"></a><a href="javascript:;"></a>
+</li>
+<li class="bg2"style="background-position: 50% 50%;"><a href="javascript:;"title="偷笑"></a><a href="javascript:;"title="可爱"></a><a href="javascript:;"title="白眼"></a><a href="javascript:;"title="傲慢"></a><a href="javascript:;"title="饥饿"></a><a href="javascript:;"title="困"></a><a href="javascript:;"title="惊恐"></a><a href="javascript:;"title="流汗"></a><a href="javascript:;"title="憨笑"></a><a href="javascript:;"title="大兵"></a><a href="javascript:;"title="奋斗"></a><a href="javascript:;"title="咒骂"></a><a href="javascript:;"title="疑问"></a><a href="javascript:;"title="嘘.."></a><a href="javascript:;"title="晕"></a><a href="javascript:;"title="折磨"></a><a href="javascript:;"title="衰"></a><a href="javascript:;"title="骷髅"></a><a href="javascript:;"title="敲打"></a><a href="javascript:;"title="再见"></a><a href="javascript:;"></a>
+</li>
+<li class="bg3"style="background-position: 50% 50%;"><a href="javascript:;"title="擦汗"></a><a href="javascript:;"title="抠鼻"></a><a href="javascript:;"title="鼓掌"></a><a href="javascript:;"title="溴大了"></a><a href="javascript:;"title="坏笑"></a><a href="javascript:;"title="左哼哼"></a><a href="javascript:;"title="右哼哼"></a><a href="javascript:;"title="哈欠"></a><a href="javascript:;"title="鄙视"></a><a href="javascript:;"title="委屈"></a><a href="javascript:;"title="快哭了"></a><a href="javascript:;"title="阴险"></a><a href="javascript:;"title="亲亲"></a><a href="javascript:;"title="吓"></a><a href="javascript:;"title="可怜"></a><a href="javascript:;"title="菜刀"></a><a href="javascript:;"title="西瓜"></a><a href="javascript:;"title="啤酒"></a><a href="javascript:;"title="篮球"></a><a href="javascript:;"title="乒乓"></a><a href="javascript:;"></a>
+</li>
+<li class="bg4"style="background-position: 50% 50%;"><a href="javascript:;"title="咖啡"></a><a href="javascript:;"title="饭"></a><a href="javascript:;"title="猪头"></a><a href="javascript:;"title="玫瑰"></a><a href="javascript:;"title="凋谢"></a><a href="javascript:;"title="示爱"></a><a href="javascript:;"title="爱心"></a><a href="javascript:;"title="心碎"></a><a href="javascript:;"title="蛋糕"></a><a href="javascript:;"title="闪电"></a><a href="javascript:;"title="炸弹"></a><a href="javascript:;"title="刀"></a><a href="javascript:;"title="足球"></a><a href="javascript:;"title="瓢虫"></a><a href="javascript:;"title="便便"></a><a href="javascript:;"title="月亮"></a><a href="javascript:;"title="太阳"></a><a href="javascript:;"title="礼物"></a><a href="javascript:;"title="拥抱"></a><a href="javascript:;"title="强"></a><a href="javascript:;"></a>
+</li>
+<li class="bg5"style="background-position: 50% 50%;"><a href="javascript:;"title="弱"></a><a href="javascript:;"title="握手"></a><a href="javascript:;"title="胜利"></a><a href="javascript:;"title="抱拳"></a><a href="javascript:;"title="勾引"></a><a href="javascript:;"title="拳头"></a><a href="javascript:;"title="差劲"></a><a href="javascript:;"title="爱你"></a><a href="javascript:;"title="NO"></a><a href="javascript:;"title="OK"></a><a href="javascript:;"title="爱情"></a><a href="javascript:;"title="飞吻"></a><a href="javascript:;"title="跳跳"></a><a href="javascript:;"title="发抖"></a><a href="javascript:;"title="怄火"></a><a href="javascript:;"title="转圈"></a><a href="javascript:;"title="磕头"></a><a href="javascript:;"title="回头"></a><a href="javascript:;"title="跳绳"></a><a href="javascript:;"title="挥手"></a><a href="javascript:;"></a>
+</li>
+</ul>
+</div>
+<p class="pNumCon"id="exp_emo0_page">
+<a href="javascript:;"class=" on  pNum db"></a>
+<a href="javascript:;"class=" pNum db"></a>
+<a href="javascript:;"class=" pNum db"></a>
+<a href="javascript:;"class=" pNum db"></a>
+<a href="javascript:;"class=" pNum db"></a>
+</p>
+</div></div>
+
+</div>
+
+
+
+
+</div>
+<header class="header oh pr" id="categoryid" category_id={$category_id}>
+<article:categoryinfo name="article" categoryid="$category_id">
+    <i class="logo fl mr db"><img src="{$article.icon}" class="tImg br lazy-hidden" width="50" height="50" alt="logo"></i>
+    <div class="evtSiteRank" data-link="/238950718/categoryrank">
+    <h2 class="title wot f18 fn c0">#{$Title}#</h2>
+    <p class="subTitle f10 c9">
+                <span class="rankBtn"></span>
+				 
+                <span aa="">帖子<em id="threadCount">{$article.tiezinums}</em></span><span>访问<em id="sitePV">{$article.views}</em></span>
+</article:categoryinfo>
+    </p>
+    </div>
+      <a id="donttouchme" class="addBbsBtn db pa followButton" ><span class="addBbs db  br f13 c2" style="background-color: #40DB84;">别点我</span></a>
+ </header>
+
+<div id="showCarousel" class="showCarousel" style="margin-bottom: 8px; visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 100%;">
+<ul class="sCUl" style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 100%; left: 0px;"><!--滑动特效--->
+<li class="sCLi" style="width: 100%; height: auto; overflow: hidden; float: left;">
+    <div class="customArea">
+ <article:categorylist name="article" categoryid="$category_id" row="1">
+        <div class="caCon">
+		 <!-- <h3 class="f12 fn c6"><i class="iconNotice c4 cf"></i>欢迎进入{:C('WEB_SITE_TITLE')}-微社区</h3>-->
+		   <div class="customNotice">
+                <ul>
+                   <li class="wot c3" data-link="/238950718/t/1497">
+				       <span class="noticeBtn br f11 c2 db">置顶</span>{$article['title']}
+				   </li>
+                 </ul>
+                 <p class="f11 c6">{$article['description']}</p>
+            </div>
+        </div>
+</article:categorylist>
+       <!-- <div class="caSide">
+            <h4 class="f11 fn c6">人气榜</h4>
+            <a href="javascript:;" class="iconPage c9 db cf sCNext"></a>
+        </div>-->
+</li>
+</ul>
+</div>
+<!--正文开始--->
+    <div class="container" id="threadList" style="min-height:240px;">
+	<div class="tlNode" id="">
+<volist name="list" id="data">
+   <div class="topicBox" id="t_{$data.id}">
+        <div class="topicCon">
+            <div class="personImgDate pr">
+                <i class="perImg mr db fl pr avatar" uid="175008851">
+                    <img src="{:get_cms_userpic($data['uid'],$data['usertype'])}" class="pImg brBig" width="35" height="35" alt="头像">
+                </i>
+                <h3 class="title f13 fn c6">{:get_cms_username($data['uid'],$data['usertype'])}</h3>
+                <p class="f11">
+                    <span class="time c9 mr">{$data['update_time']|date="Y-m-d h:i",###}</span>
+                    <!--<span class="address c6"><i class="iconloc f14 c1 cf"></i>{:C('WEB_SITE_TITLE')}</span>-->
+                </p>
+				<a class="iconAd cf f16 c9 pa db PerPopBtn" tid="{$data.id}" ></a>
+                    <div class="adPop pa perPop hide">
+                        <div class="adBCon pr  f12">
+                          <p class="hidetiezi" tid="{$data.id}">屏蔽</p>
+<if condition="session('P.id') neq ''">
+   <if condition="session('P.id') eq $data['uid']">
+      <p class="deletetz"  tid="{$data.id}">删帖</p>
+   </if>
+</if>
+                        </div>
+                   </div>
+            </div>
+            <div class="detailCon">
+                <div class="dCon f16" id="dCondCon" name="dCondCon" detailurl="{:U('Article/detail?id='.$data['id'])}">
+				    <span id="z_{$data.id}">{$data.title}</span><span name="readall"></span>
+				    <p>{:get_cms_samils($data['content'])}</p>
+                </div>
+<if condition="countWords($data['content']) gt 280">
+<a class="showAll f11" style="float:right;"href="{:U('Article/detail?id='.$data['id'])}" title="查看全文">查看全文</a>
+</if>
+                <div class="operation oh" style="margin-top: 30px;">
+                    <span class="replyShare db c9 fr f13" tid="2998">
+<!--                        <a tieziid="{$data.id}" title="赞" class="c9 like"><i class="iconNoPraise f18 cf"></i><span class="likeNum">{$data.bookmark}</span></a> -->
+                        <a title="分享" class="c9 shareBtn" id="amango_share"><i class="iconShare f18 cf"></i></a>
+                        <a tieziid="{$data.id}" title="回复" class="c9 threadReply"><i class="iconReply f18 cf"></i>{:get_cms_tiezireplys($data['id'])}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+<eq name="category['reply_show']" value="1">
+   <gt name="data.id|get_cms_tiezireplys" value="0">
+        <div class="topicList">
+            <ul class="replyList">
+<article:replylist name="replyinfo" documentid="$data['id']" row="4">
+    <li id="p_2998_2219_0" uid="{$replyinfo.fromuserid}" author="{$replyinfo.fromuserid}">
+	<a class="f13 c3">
+	<img src="{:get_cms_userpic($replyinfo['fromuserid'],$replyinfo['fromusertype'])}" class="sImg brBig pa db" width="20" height="20" alt="头像"><span class="c7">{:get_cms_username($replyinfo['fromuserid'],$replyinfo['fromusertype'])}：</span>{:get_cms_samils($replyinfo['content'])}</a>
+    </li>
+</article:replylist>
+            </ul>
+			<!---
+            <a href="javascript:;" class="db f12 moreReply" id="rCount_2998" rcount="4">查看全部4条回复</a>
+			-->
+        </div>
+   </gt>
+</eq>
+</div>
+</volist>
+  </div>
+</div>
+
+    <div id="loadNextPos"></div>
+	<div class="loading  ui-refresh-down"></div> 
+</div>
+<div class="bottomBar">
+  <div data-am-widget="gotop" class="am-gotop am-gotop-fixed" style="right: 5px;margin-bottom:30px;width: 40px;
+height: 40px;">
+  <a href="#top" title="回到顶部">
+    <span class="am-gotop-title">回到顶部</span>
+    <i class="am-gotop-icon am-icon-chevron-up"></i>
+  </a>
+</div> 
+  <div class="bottomBarCon">
+    <a href="javascript:;" class="replyBtn db" bind="1" style="margin-top: -5px;" id="sendinfo"><i class="incoR"></i>参与发帖</a>
+     <a id="info_center" class="moreC db">
+        <i class="circle">●</i><i class="circle">●</i><i class="circle">●</i>
+        <i class="db numP" style="display:none;">0</i>
+    </a>
+  </div>
+
+</div>
+<!---侧滑开始----->
+<div style="width: 190px; position: fixed; z-index: 100010; top: 0px; height: 100%; right: 0px;" class="panel" id="fwin_dialog_sideBar">
+  <div class="sideBar">
+    <div class="searchContent evtSearchWrap">
+     <font size="5" >{:session('P.nickname')}</font>
+    </div>
+    <div class="sideBarCon" id="sideBarCon">
+        <h3 class="sideTit f14 fn c2">话题标签</h3>
+<!---
+        <ul style="position: relative;">
+		<li class="filter on"><a class="iconSucc cf s_succ db" href="javascript:;">全部</a></li>
+        <li class="filter" labelid="showPic"><a class="c9" href="javascript:;">栏目</a></li>
+        </ul>
+--->
+        <div class="customTag" id="customTag"><div>
+<article:subcategorylist name="article" categoryid="$category_id">
+		    <neq name="category_id" value="$article['id']">
+			    <a href="{:U('Article/lists?category='.$article['name'])}" class="f12 filter">#{$article.title}#</a>
+            </neq>
+</article:subcategorylist>
+      </div>
+</div>
+        <ul class="sidePerMan">
+<!---
+<i class="db numP" id="sideMsgNum" style="display:none;">0</i>
+--->
+<if condition="is_login()">
+ <li id="sideProfile"><a href="{:U('User/profile')}" class="iconPrfile  f16 c9 cf">个人主页</a></li>
+<else/>
+<li id="sideUnfollow"  ><a href="javascript:void(0)" id="closeWindow" class="iconExit f16 c9 cf">微信公众号重新进入</a></li>
+</if>
+        </ul>
+</div>
+</div>
+<!---侧滑结束----->
+</div>
+     
+        <div id="pagenums" page="1" class="copyRight ht">微社区，精彩在你身边</div>
+</div>
+	<script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/amui/localResizeIMG.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/amui/mobileBUGFix.mini.js" type="text/javascript"></script>
+  <script>
+var readyFunc = function onBridgeReady() {
+    var curid;
+    var curAudioId;
+    var playStatus = 0;
+    document.querySelector('#closeWindow').addEventListener('click', function(e){
+    	WeixinJSBridge.invoke('closeWindow',{
+        },function(res){
+            alert('通过微信公众号下方的【岘港直播】重新进入吧');
+       });
+    });    
+}
+</script> 
+	<script type="text/javascript">
+        $('input:file').localResizeIMG({
+             width: 640,
+             quality: 1,
+             success: function (result) {
+			 var imgli = '';
+             var time = (new Date()).valueOf();
+			 var hasimg = 0;
+             imgli = '<li id="'+time+'"><div class="photoCut"><img src="'+result.base64+'"></div><a href="javascript:;" class="cBtn cBtnOn pa db closeuploadpic" title="" _id="'+time+'">关闭</a></li>';
+			 //图片个数
+			 hasimg   = $("#uploadpicslist li[id!='addPic']").length;
+			 
+			 $('#exp_emo0_page').hide();
+			 if(hasimg>=3){
+                 $('.photoTipsBox').css('height','200px');
+			 }
+			 if(hasimg>7){
+			     $('#onlyUploadNum').text('0');
+				 $('#addPic').hide();
+			 } else {
+			     if(hasimg==7){
+			        $('#onlyUploadNum').text('0');
+				    $('#addPic').hide();
+			     } else {
+			        var lastnums = 7-hasimg;
+			        $('#onlyUploadNum').text(lastnums);
+			     }
+				    $('#uploadpicslist').prepend(imgli);
+					var inputstr = '<input id="input_'+time+'" type="hidden" name="pics[]" cate="1" value="'+result.base64+'">';
+                    $('#uppics').prepend(inputstr);
+			 }
+			 //if(){
+			 //lastnums = ;
+             }
+         });
+	</script>
+<script type="text/javascript">
+    $(function ($) {
+        $('.ui-refresh').refresh({
+            load: function (dir, type) {
+                var me = this;
+				var postdata = new Object(); 
+		   postdata.page  = $('#pagenums').attr('page');
+		postdata.category = $('#category_id').val();
+$.ajax({
+  type: 'POST',
+  url: "{:U('Article/ajax_lists')}",
+  data: postdata,
+  // type of data we are expecting in return:
+  dataType: 'json',
+  timeout: 300,
+  success: function(data){
+           $('#pagenums').attr('page',data.p);
+           if(data.status==1){
+		         //填充数据 
+                  var $list = $('.tlNode'),
+                            html = (function (data) {      //数据渲染
+                                var liArr = [];
+                                $.each(data.msg, function () {
+								var basehtml  = '';
+                                var pics      = '';
+								var replylisthtml  = '';
+
+        //生成图片列表
+        if(this.cover_id!=0){ pics  = '<li><img src="'+this.cover_id+'" data-rel="'+this.cover_id+'"></li>';}
+		if(this.replylist!=''){
+		//生成回复列表
+		//<a tieziid="'+this.id+'" title="赞" class="c9 like"><i class="iconNoPraise f18 cf"></i><span class="likeNum">0</span></a>
+		$.each(this.replylist, function () {
+   replylisthtml += '<li uid="'+this.fromuserid+'" author="'+this.fromnickname+'"><a class="f13 c3"><img src="'+this.fromheadimg+'" class="sImg brBig pa db" width="20" height="20" alt="头像"><span class="c7">'+this.fromnickname+'：</span>'+this.content+'</a></li>';
+		});
+		replylisthtml = '<div class="topicList"><ul class="replyList">'+replylisthtml+'</ul></div>';
+		}
+basehtml = '<div class="topicBox" id="t_'+this.id+'"> <div class="topicCon"><div class="personImgDate pr"> <i class="perImg mr db fl pr avatar" uid="'+this.uid+'"><img src="'+this.userheadimg+'" class="pImg brBig" width="35" height="35" alt="头像"> </i><h3 class="title f13 fn c6">'+this.usernickname+'</h3><p class="f11"><span class="time c9 mr">'+this.create_time+'</span><span class="address c6"><i class="iconloc f14 c1 cf"></i>'+this.tlocation+'</span></p><a class="iconAd cf f16 c9 pa db PerPopBtn" tid="'+this.id+'"></a><div class="adPop pa perPop hide"><div class="adBCon pr  f12"><p class="hidetiezi" tid="'+this.id+'">屏蔽</p><p class="deletetz"  tid="'+this.id+'">删帖</p></div> </div></div> <div class="detailCon"><div class="dCon f16" detailurl="'+this.detailurl+'"><span id="z_'+this.id+'">'+this.title+'</span><p>'+this.content+'</p></div><div class="slideBox"><ul style="position: relative;">'+pics+'</ul><span class="pageNum br pa db" style="display:none;">1张</span></div> <div class="operation oh"> <span class="replyShare db c9 fr f13" tid="2998"><a title="分享" class="c9 shareBtn" id="amango_share"><i class="iconShare f18 cf"></i></a><a tieziid="'+this.id+'" title="回复" class="c9 threadReply"><i class="iconReply f18 cf"></i>0</a></span></div></div></div>'+replylisthtml+'</div>';
+                                    liArr.push(basehtml);
+                                });
+                                return liArr.join('');
+                            })(data);
+                    $list[dir == 'up' ? 'prepend' : 'append'](html);
+					me.afterDataLoading();
+           } else {
+		         $('.ui-refresh-down').text('到底咯~');
+				  me.afterDataLoading();
+		   }
+  },
+  error: function(xhr, type){
+    $('.ui-refresh-down').text('到底咯~'); me.afterDataLoading();
+  }
+});
+            }
+        });
+        $('.detailCon .dCon').live('click', function () {
+            var detailurl = $(this).attr('detailurl');
+			window.open(detailurl);
+        });
+		//赞一个
+		$('.like').live('click', function () {
+            var tieziid   = $(this).attr('tieziid');
+			var praisenums    = $(this).children('span .likeNum').text();
+			var praisestatus  = $(this).children('i').hasClass('iconPraise');
+			var nowpraisenums = parseInt(praisenums);
+			$(this).children('i').removeClass('iconNoPraise');
+			//判断加减
+		    if(praisestatus){
+                 $(this).children('i').removeClass('iconPraise');
+				 $(this).children('i').addClass('iconNoPraise')
+				 nowpraisenums = nowpraisenums-1;
+			} else {
+			     $(this).children('i').removeClass('iconNoPraise');
+                 $(this).children('i').addClass('iconPraise');
+				 nowpraisenums = nowpraisenums+1;
+			}
+			   $(this).children('span .likeNum').text(nowpraisenums);
+        });
+		//回复 hasClass
+		$('.threadReply').live('click', function (e) {
+		e.stopPropagation();
+            var _scrollHeight = $(document).scrollTop();
+            var      _posiTop = _scrollHeight+20;
+            var tieziid = $(this).attr('tieziid');
+            var z_title = $('#z_'+tieziid).text();
+			//将回复帖子id  帖子标题  传递
+			$('#category_id').attr('name','');
+			$('#model_id').attr('name','');
+
+            $("input[cate='1']").remove();
+			$('#sendtitle').attr('name','');
+			$('#sendtitle').hide();
+			$('#replytz_title').text('“'+z_title+'”');
+			$('#replytz_id').val(tieziid);
+			$("#amango_editor").css("top",_posiTop+'px'); 
+			$('#amango_editor').toggle();
+			$('#fwin_mask_replyForm').toggle();
+			
+        });
+        $('.panel').panel({
+            contentWrap: $('.cont')
+        });
+        $('#info_center').live('click', function () {
+            $('.panel').panel('toggle', 'overlay', 'right');
+        });
+        $('#donttouchme').live('click', function (e) {
+		e.stopPropagation();
+            $('#showShare').toggle();
+        });
+        $('#setguanzhu').live('click', function (e) {
+		e.stopPropagation();
+            $('#guanzhu').toggle();
+        });
+		//监听上传点击 expreList
+        $('.uploadPicBox').live('click', function () {
+		var express = $(".expreList").is(":hidden");
+
+				 var common = $(".operatingBox").is(":hidden");
+                 var photo  = $(".expreList").is(":hidden");
+				 if(common){
+				      $('.operatingBox ').show();
+			          $('.photoTipsBox').show();
+					  $('.expreList').hide();
+				 } else {
+				      if(photo){
+                           $('.operatingBox ').hide();
+						   $('.photoTipsBox').hide();
+					  } else {
+				           $('.operatingBox').show();
+			               $('.photoTipsBox').show();
+					  }
+                          $('.expreList').hide();
+				 }
+
+
+        });
+		//监听选中的表情 bg1
+        $('.expreCon a').live('click', function () {
+		    var title = $(this).attr('title');
+			var str   = $('#content').val();
+            if(title==''){
+			    $('#content').val(str);
+			} else {
+                $('#content').val(str+'['+title+']');
+			}
+        });
+		//表情
+        $('.iconExpression').live('click', function (e) {
+		e.stopPropagation();
+		   //判断是否隐藏
+				 var common = $(".operatingBox").is(":hidden");
+                 var photo  = $(".photoTipsBox").is(":hidden");
+				 if(common){
+				      $('.operatingBox ').show();
+			          $('.expreList').show();
+					  $('.photoTipsBox').hide();
+				 } else {
+				      if(photo){
+                           $('.operatingBox ').hide();
+						   $('.expreList').hide();
+					  } else {
+				           $('.operatingBox').show();
+			               $('.expreList').show();
+					  }
+                          $('.photoTipsBox').hide();
+				 }
+        });
+        //表情左右滑动 0-4
+		$('#expreBox').swipeLeft(function(){
+		   var lastboxid = parseInt($(this).attr('boxid'));
+		       boxid = lastboxid+1;
+            if(isNaN(boxid)){
+               boxid = 0;
+			}
+			if(boxid>4){
+               boxid = 4;
+			}
+			var leftsize = -312*boxid;
+			//left: -1248px scrolleft
+			$("#exp_emo0").css("left",leftsize+'px');
+			$('#exp_emo0').attr('scrolleft',leftsize);
+			$(this).attr('boxid',boxid);
+			$("#exp_emo0_page").find('a').eq(boxid).siblings().removeClass("on");
+			$("#exp_emo0_page").find('a').eq(boxid).addClass("on"); 
+        });
+		$('#expreBox').swipeRight(function(){
+		   var lastboxid = parseInt($(this).attr('boxid'));
+		       boxid = lastboxid-1;
+            if(isNaN(boxid)){
+               boxid = 0;
+			}
+			if(boxid<0){
+               boxid = 0;
+			}
+			var leftsize = -312*boxid;
+			//left: -1248px scrolleft
+			$("#exp_emo0").css("left",leftsize+'px');
+			$('#exp_emo0').attr('scrolleft',leftsize);
+			$(this).attr('boxid',boxid);
+			$("#exp_emo0_page").find('a').eq(boxid).siblings().removeClass("on");
+			$("#exp_emo0_page").find('a').eq(boxid).addClass("on"); 
+        });
+        $('#amango_share').live('click', function (e) {
+		e.stopPropagation();
+            $('#showShare').toggle();
+        });
+        $('#amango_editor_cancel').live('click', function () {
+		    $('#fwin_mask_replyForm').hide();
+            $('#amango_editor').hide();
+		    $('.operatingBox').hide();
+        });
+		$('#sendinfo').live('click', function (e) {
+		    e.stopPropagation();
+            var _scrollHeight = $(document).scrollTop();
+            var      _posiTop = _scrollHeight;
+			//将回复帖子id  帖子标题  传递
+			$("input[cate='1']").remove();
+		    $('#sendtitle').attr('name','title');
+			$('#category_id').attr('name','category_id');
+			$('#model_id').attr('name','model_id');
+			$('#sendtitle').show();
+			$('#replytz_id').attr('name','');
+			
+            $('#replytz_title').text('暂时无法使用定位服务');
+            $('#replyForm').attr('action',"{:U('Article/add')}");
+			
+			$("#amango_editor").css("top",_posiTop+'px'); 
+			$('#amango_editor').toggle();
+			$('#fwin_mask_replyForm').toggle();
+			
+        });
+        $('.PerPopBtn').live('click', function (e) {
+		e.stopPropagation();
+		   var tzid = $(this).attr('tid');
+            $('#t_'+tzid).find('div .perPop').toggle();
+        });
+		//图片上传操作
+        $('.closeuploadpic').live('click', function () {
+		    var imgid = $(this).attr('_id');
+			var hasnums = parseInt($('#onlyUploadNum').text());
+			var nows    = hasnums+1;
+			$('#onlyUploadNum').text(nows);
+			$('#addPic').show();
+			$(this).hide();
+			$('#'+imgid).remove();
+			$('#input_'+imgid).remove();
+			 if(nows>=5){
+                 $('.photoTipsBox').css('height','120px');
+			 }
+        });
+        $('.hidetiezi').live('click', function () {
+            var tzid = $(this).attr('tid');
+			if(tzid!=''){
+$('#t_'+tzid).animate({
+        opacity: 1,
+        left:
+        '100px',
+        color:
+        '#abcdef',
+        rotateZ:
+        '360deg',
+        translate3d: '0,10px,0'
+        }, 500,
+        'ease-out',function(){$(this).hide();});
+			}
+        });
+
+        $('.deletetz').live('click', function () {
+            var tzid = $(this).attr('tid');
+			   if(tzid!=''){
+				var postdata = new Object(); 
+               postdata.id   = tzid;
+$.ajax({
+  type: 'POST',
+  url: "{:U('Article/ajax_del')}",
+  data: postdata,
+  dataType: 'json',
+  timeout: 300,
+  success: function(data){
+      if(data.status==1){
+$('#t_'+tzid).animate({
+        opacity: 1,
+        left:
+        '100px',
+        color:
+        '#abcdef',
+        rotateZ:
+        '360deg',
+        translate3d: '0,10px,0'
+        }, 500,
+        'ease-out',function(){$(this).hide();});
+	  } else {
+          alert(data.msg);
+	  }
+  },
+  error: function(xhr, type){
+    alert('暂时无法删除帖子');
+  }
+});
+             }
+        });
+         $(document).click(function() {
+               $('#showShare').hide();
+               $('#guanzhu').hide();
+			   $('.perPop').hide();
+         });
+    }(Zepto));
+</script>
+<script language="JavaScript" type="text/javascript">   
+function readall()
+{
+	var h=document.getElementsByName('dCondCon').clientHeight;
+	if(h>700){
+	document.getElementsByName('').style.display='block';
+	}
+}
+window.onload=readall;
+</script>
+<include file="Public/weixinjs"/>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<include file=":amango_include(shop/public/headtop)" />
+</head>
+<body>
+<include file=":amango_include(shop/public/head)" />
+<div class="banner">
+    <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none outside none; position: relative;">
+        <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease 0s; width: 1800px; left: -1200px;">
+        <volist name='ad' id='vo'>
+            <li style="float: left; display: block; width: 600px;">
+                <span>
+                   <a href="{$vo.url}"> <img title="{$vo.desc}" width="100%" src="data/upload/advert/{$vo.content}"></a>
+                </span>
+            </li>
+        </volist>
+        </ul>
+        <div id="pagenavi">
+         <volist name='ad' id='vo' key='k' >
+           <a <if condition='$k eq 1'>class="active"</if> href="javascript:void(0);">{$k}</a>
+        </volist>
+        </div>
+    </div>
+</div>
+<div class="s_bottom"></div>
+<script type="text/javascript">
+$(function(){
+	$("div.module_special .wrap .major ul.list li:last-child").addClass("remove_bottom_line");
+});
+var active=0,
+	as=document.getElementById('pagenavi').getElementsByTagName('a');
+	
+for(var i=0;i<as.length;i++){
+	(function(){
+		var j=i;
+		as[i].onclick=function(){
+			t2.slide(j);
+			return false;
+		}
+	})();
+}
+var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:function(index){
+		as[active].className='';
+		active=index;
+		as[active].className='active';
+	}});
+</script>
+<div id="content">
+   <div class="module_special" style="margin: 50px;">
+        <h2 class="common_title veins2">
+            <div class="ornament1"></div>
+            <div class="ornament2"></div>
+            <span class="ico1">
+                <span class="ico2">站长推荐</span>
+            </span>
+        </h2>
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="group_major">
+                    <ul class="list">
+<article:position name="article" cate="$category_id" pos="4,7" limit="1">
+                        <li>
+                            <div class="pic">
+                                <a href="{:U('Article/detail',array('id'=>$article['id']))}">
+                                    <img src="{$article['cover_id']}">
+                                </a>
+                            </div>
+                            <div class="good_content">
+                                <h3>
+                                    <a target="_blank" href="{:U('Article/detail',array('id'=>$article['id']))}">{$article.title}</a>
+                                </h3>
+                                <p>
+                                    <span> 优惠价:&nbsp;</span>¥{$article.shop_good_price}
+                                </p>
+                                <div class="time">
+                                    截止:&nbsp;{$article['deadline']|date="Y年m月d日 h时i分",###}
+                                </div>
+                            </div>
+                        </li>
+</article:position>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module_special">
+        <h2 class="common_title veins2">
+            <div class="ornament1"></div>
+            <div class="ornament2"></div>
+            <span class="ico1">
+                <span class="ico2">推荐商品</span>
+            </span>
+        </h2>
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="major">
+                    <ul class="list">
+<article:position name="article" cate="$category_id" pos="3,4,7" limit="2">
+                      <li>
+                    <div class="pic"><a href="{:U('Article/detail',array('id'=>$article['id']))}"><img  src="{$article['cover_id']}"></a></div>
+                   <div class="good_content">
+                    <h3><a  href="{:U('Article/detail',array('id'=>$article['id']))}">{$article.title}</a> </h3>
+                    <p>¥{$article.shop_good_price}</p>
+                    </div>
+                    <span class="show_good"><a  href="{:U('Article/detail',array('id'=>$article['id']))}"></a></span>
+                      </li>
+</article:position>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module_special tbr">
+        <h2 class="common_title veins2">
+            <div class="ornament1"></div>
+            <div class="ornament2"></div>
+            <span class="ico1">
+                <span class="ico2">最新商品</span>
+            </span>
+        </h2>
+        <div class="wrap">
+            <div class="wrap_child">
+                <div class="major">
+                    <ul class="list">
+<article:position name="article" cate="$category_id" limit="6">
+                      <li>
+                    <div class="pic"><a href="{:U('Article/detail',array('id'=>$article['id']))}"><img  src="{$article['cover_id']}"></a></div>
+                   <div class="good_content">
+                    <h3><a  href="{:U('Article/detail',array('id'=>$article['id']))}">{$article.title}</a> </h3>
+                    <p>¥{$article.shop_good_price}</p>
+                    </div>
+                    <span class="show_good"><a  href="{:U('Article/detail',array('id'=>$article['id']))}"></a></span>
+                      </li>
+</article:position>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<include file=":amango_include(shop/public/footer)" />
+</body>
+</html>

@@ -1,0 +1,156 @@
+ <extend name="Base/common" /> 
+  <block name="diystyle"> 
+   <style>
+    @media only screen and (min-width: 1200px) {
+      .blog-g-fixed {
+        max-width: 1200px;
+      }
+    }
+    @media only screen and (min-width: 641px) {
+      .blog-sidebar {
+        font-size: 1.4rem;
+      }
+    }
+    .blog-main {
+      padding: 20px 0;
+    }
+    .blog-title {
+      margin: 10px 0 20px 0;
+    }
+    .blog-meta {
+      font-size: 14px;
+      margin: 10px 0 20px 0;
+      color: #222;
+    }
+    .blog-meta a {
+      color: #27ae60;
+    }
+    .blog-pagination a {
+      font-size: 1.4rem;
+    }
+    .blog-team li {
+      padding: 4px;
+    }
+    .blog-team img {
+      margin-bottom: 0;
+    }
+    .footer p {
+      color: #7f8c8d;
+      margin: 0;
+      padding: 15px 0;
+      text-align: center;
+      background: #2d3e50;
+    }
+    .blog-footer {
+      padding: 10px 0;
+      text-align: center;
+    }
+  
+    .am-article-title
+    {
+    font-size:2.0rem;
+    font-weight:bold;
+    margin:0;
+    }
+	
+	.am-panel {
+    margin: 0;
+	}
+	.now-price
+	{
+	color: rgb(245, 174, 8);
+    font-size: 2em;
+    margin: 0 10px;
+    text-shadow: 1px 1px 1px #ddd;
+	}
+	.o-price
+	{
+	text-decoration:line-through;
+	background-color: rgb(249, 131, 133);
+    border: 1px solid rgb(244, 77, 79);
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 0 5px;
+    text-decoration: line-
+	}
+	
+	.am-modal {
+    top: 50%;
+	}
+	.am-panel-bd h3
+	{
+	text-align:center;
+	}
+	.am-btn-success {
+    background-color: #5eb95e;
+    border-color: #4db14d;
+    color: #fff;
+    margin-top: 10px;
+	}
+  </style> 
+  </block> 
+  <block name="body">
+
+
+
+ 
+<div style="margin: 20px 0px;">	</div>
+   <div class="col-md-8"> 
+   <div class="am-panel am-panel-default">
+    <div class="am-panel-bd">
+	<h3>{$info.title} </h3>
+<!--	<span class="now-price">$55.5</span><span class="o-price">原价：$66.6</span>  -->
+	</div>
+	</div>
+   <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+
+
+    <article class="blog-main"> 
+     <div class="am-g blog-content"> 
+      <div class="col-lg-12">
+        {$info.content} 
+      </div> 
+     </div> 
+    </article> 
+
+   </div> 
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
+id="">
+  <ul class="am-navbar-nav am-cf sm-block-grid-4">
+    <li data-am-modal="{target: '#doc-modal-4'}">
+      <a>
+        <span class="am-icon-shopping-cart"></span>
+        <span class="am-navbar-label">立即购买</span>
+      </a>
+    </li>
+    <li data-am-modal="{target: '#doc-modal-1'}">
+      <a>
+        <span class="am-icon-ticket"></span>
+        <span class="am-navbar-label">使用优惠券</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">使用优惠券
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+    <div class="am-modal-bd">
+    <form class="am-form">
+	<input class="am-form-field am-input-lg" type="text" placeholder="请输入优惠券码">
+	<button type="button" class="am-btn am-btn-success">立即使用</button>
+	</form>
+    </div>
+  </div>
+</div>
+   
+   <div class="col-md-4 blog-sidebar"> 
+    <div class="am-panel-group"> 
+     <include file="Public/detail_right" /> 
+     <include file="Public/qr" /> 
+    </div> 
+   </div> 
+  </block> 

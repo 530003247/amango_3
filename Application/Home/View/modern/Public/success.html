@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <title>成功提示</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+<include file="Public/assets"/>
+</head>
+<body style="background-color: white;">
+  <div class="admin-content">
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <h5 class="am-text-center am-text-xl am-margin-top-lg"><?php echo($error); ?></h5>
+         <p class="am-text-center"><a id="href"  href="<?php echo($jumpUrl); ?>">立即跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b></p>
+        <pre class="page-404" align="center">
+          .----.
+       _.'__    `.
+   .--($)($$)---/#\
+ .' @          /###\
+ :    -----,   #####
+  `-..__.-' _.-\###/
+        `;_:    `"'
+      .'"""""`.
+     /,  Yes  \\
+    //  成 功  \\
+    `-._______.-'
+    ___`. | .'___
+   (______|______)
+        </pre>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
+</body>
+</html>

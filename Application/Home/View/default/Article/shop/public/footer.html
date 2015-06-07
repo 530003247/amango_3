@@ -1,0 +1,26 @@
+<!---<div id="footer">
+    <p class="foot_nav">
+        <a href="{:U('User/index')}">会员中心</a> | <a href="{:U('Shopcart/index')}">购物车</a> | <a href="<if condition="$visitor.username eq '' "> {:U('User/login')}">登录</a> <else/>{:U('User/logout')}">退出</a> </if>
+    </p>
+    <div style="height:40px; background:#fff; padding:0; overflow:hidden;">
+        
+    </div>
+</div>
+-->
+<script>
+var PINER = {
+    root: "__ROOT__",
+    uid: "<?php echo $visitor['id'];?>", 
+    async_sendmail: "<?php echo $async_sendmail;?>",
+    config: {
+        wall_distance: "<?php echo C('pin_wall_distance');?>",
+        wall_spage_max: "<?php echo C('pin_wall_spage_max');?>"
+    },
+    //URL
+    url: {}
+};
+//语言项目
+var lang = {};
+<volist name=":L('js_lang')" id="val">lang.{$key} = "{$val}";</volist>
+</script>
+{:Amango_Asset('__PUBLIC__/logic/shop/js/jquery/plugins/jquery.tools.min.js,__PUBLIC__/logic/shop/js/jquery/plugins/jquery.masonry.js,__PUBLIC__/logic/shop/js/jquery/plugins/formvalidator.js,__PUBLIC__/logic/shop/js/fileuploader.js,__PUBLIC__/logic/shop/js/pinphp.js,__PUBLIC__/logic/shop/js/front.js,__PUBLIC__/logic/shop/js/dialog.js,__PUBLIC__/logic/shop/js/wall.js,__PUBLIC__/logic/shop/js/item.js,__PUBLIC__/logic/shop/js/user.js,__PUBLIC__/logic/shop/js/album.js')}

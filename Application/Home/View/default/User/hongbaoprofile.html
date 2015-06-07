@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<include file="bookheadtop" />
+<script charset="utf-8" type="text/javascript" src="__PUBLIC__/logic/shop/weixin/js/dialog.js" id="dialog_js"></script>
+<link href="__PUBLIC__/logic/shop/weixin/css/dialog.css" rel="stylesheet" type="text/css">
+<script charset="utf-8" type="text/javascript" src="__PUBLIC__/logic/shop/weixin/js/jquery_003.js"></script>
+<script charset="utf-8" type="text/javascript" src="__PUBLIC__/logic/shop/weixin/js/zh-CN.js"></script>
+<script charset="utf-8" type="text/javascript" src="__PUBLIC__/logic/shop/weixin/js/jquery_002.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/logic/shop/weixin/css/jquery.css">
+<style>
+.gift-box{
+position:absolute;
+top:5%;
+right:2%;
+}
+.gift-box-main{
+width:50px;
+height:50px;
+}
+.gift-box-main>img{
+width:100%;
+}
+.duihuan{
+width: 100%;
+display: block;
+text-align: center;
+margin: 5px 0;
+height: 40px;
+line-height: 40px;
+border: 1px solid #ddd;
+background-color: #ff8700;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#ffbf00),to(#ff8700));
+background-image: -webkit-linear-gradient(top,#ffbf00,#ff8700);
+background-image: linear-gradient(to bottom,#ffbf00,#ff8700);
+border-radius: 5px;
+color: #fff;
+font-size: 16px;
+cursor: pointer;
+}
+.wxpay{
+background-image: linear-gradient(to bottom,#00FF3D,#227408);
+}
+.cost{
+background-image: linear-gradient(to bottom,#838382,#797672);
+}
+</style>
+</head>
+<body>
+<include file="bookhead" />
+<div class="content" style="top: 45px;">
+    <h3 class="membertop">
+       <p class="my_name"><a href="#">  {:session('P.nickname')}</a></p>
+	   <p class="my_name"><a href="#">  积分：{:session('P.score')}</a></p>
+    </h3>
+<div class="gift-box"><a href="#"><div class="gift-box-main"><img src="__PUBLIC__/logic/shop/images/giftimg.png"/></div></a></div>
+    <ul class="buyer_stat">
+          <li class="btn_1 <if condition='$status eq 1'>active</if> " style="width: 33%;"><a href="{:U('User/hongbaoprofile',array('status'=>1))}">我的红包</a><span>已有兑换</span></li>        
+          <li class="btn_2 <if condition='$status eq 2'>active</if> " style="width: 34%;"><a href="{:U('User/hongbaoprofile',array('status'=>2))}">使用记录</a><span>使用记录</span></li>
+          <li class="btn_3 <if condition='$status eq 3'>active</if>" style="width: 33%;"><a href="{:U('User/hongbaoprofile',array('status'=>3))}">兑换红包</a><span>兑换红包</span></li>
+    </ul>
+	<script type="text/javascript">
+    $(function(){
+    $(".buyer_stat > li a").each(function() {
+                href="http://store.weiapps.cn/"+$(this).attr("href");
+                if(window.location.href==href){
+                    $(this).parent("li").addClass("active");
+                }
+            });
+    });
+    </script>
+    <div class="wrap">
+        <div class="public">
+                         <switch name="status" >
+                         <case value="1">
+<volist name="_list" id="vo">
+<div class="order_form"><p class="num">领取时间: {$vo.create_time|date="Y-m-d H:s:i",###}</p>
+<div class="con">
+<p class="ware_pic"><img src="{$vo.hb_pic}" height="80" width="80"></p>
+<p class="ware_text">{$vo.hb_title}<br><span class="attr"></span></p>
+<p class="price"></p>
+</div>
+<div class="clear"></div>
+<div class="foot">
+<div class="handle">
+<div style="float:left;" ><p class="time">截止日期:{$vo.hb_end|date="Y-m-d H:s:i",###}</p>
+<h4 class="add_title" ><a class="duihuan" >可用面值：{$vo.hb_value} 金币</a></h4>
+</div>
+</div>
+</div>
+</div>
+</volist>
+                         </case>
+                         <case value="2">
+<volist name="_list" id="vo">
+<div class="order_form"><p class="num">使用时间: {$vo.create_time|date="Y-m-d H:s:i",###}</p>
+<div class="con">
+<p class="ware_pic"><img src="{$vo.hb_pic}" height="80" width="80"></p>
+<p class="ware_text">{$vo.hb_title}<br><span class="attr"></span></p>
+<p class="price"><span>{$vo.use_desc}</span></p>
+</div>
+<div class="clear"></div>
+<div class="foot">
+<div class="handle">
+<div style="float:left;" ><p class="time">消费使用：{$vo.hb_value} 金币</p></div>
+</div>
+</div>
+</div>
+</volist>
+                         </case>
+                         <case value="3">
+<volist name="_list" id="vo">
+<div class="order_form">
+<div class="con">
+<p class="ware_pic"><img src="{$vo.img}" height="80" width="80"></p>
+<p class="ware_text">{$vo.title}<br><span class="attr">{$vo.desc}</span></p>
+<p class="price">消耗：<span>{$vo.credits}</span></p>
+</div>
+<div class="clear"></div>
+<div class="foot">
+<div class="handle">
+<div style="float:left;" ><p class="time">开始时间:{$vo.start_time|date="Y-m-d H:s:i",###}</p><p class="time">截止时间:{$vo.end_time|date="Y-m-d H:s:i",###}</p>
+<h4 class="add_title" ><a class="duihuan wxpay"  href="{:U('gethongbao',array('id'=>$vo['id']))}">立即兑换：{$vo.value} 金币</a></h4>
+</div>
+</div>
+</div>
+</div>
+</volist>
+                         </case>
+                        <default />
+                                    <div class="order_form member_no_records"> <span>没有符合条件的记录</span> </div>
+                        </switch>  
+            <div class="order_form_page">
+                <div class="page">
+            	</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="wrap_bottom"></div>
+    </div>     
+    <div class="wrap_line margin1" style="display:none;">
+            <div class="public_index">
+                <div class="information_index">
+                    <div class="awoke">
+                        您目前还没有已生成的订单<br>去<a href="#">商城首页</a>，挑选喜爱的商品，体验购物乐趣吧。
+                    </div>
+                </div>
+
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+    <div class="clear"></div>
+</div>
+</body>
+<include file="Public/weixinjs"/>
+</html>

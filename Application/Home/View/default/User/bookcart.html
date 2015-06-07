@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<include file="bookheadtop" />
+</head>
+<body>
+<include file="bookhead" />
+<script type="text/javascript">
+function drop_cart_item(rec_id){
+    var tr = $('#cart_item_' + rec_id);
+    var amount_span = $('#cart_amount');
+    var cart_goods_kinds = $('#cart_goods_kinds');
+    $.post("{:U('User/bookcart')}",{itemId:rec_id},function(data){
+    	if(data.status==1){
+    		window.location.reload(); 
+    	}
+    },'json');
+}
+function change_quantity(rec_id,input){
+    var subtotal_span = $('#item' + rec_id + '_subtotal');
+    var amount_span   = $('#cart_amount');
+    //暂存为局部变量，否则如果用户输入过快有可能造成前后值不一致的问题
+    var _v = input.value;
+    // alert($(input).attr('changed')); 
+  if(isNaN(input.value)||input.value<1){
+  	 alert('请输入大于0的数字');
+  	 //$(input).attr('changed', _v);
+  	 $(input).val($(input).attr('changed'));
+  	 return false;
+  }
+   $.post("{:U('Shop/change_quantity')}",{itemId:rec_id,quantity:_v},function(data){
+    	if(data.status==1){
+    	    subtotal_span.html(price_format(data.item.price*data.item.num));
+            amount_span.html(price_format(data.sumPrice));
+            $(input).attr('changed',_v);
+    	}else{
+    		alert(data.msg);
+    		$(input).val($(input).attr('changed'));
+    		return false;
+    	}
+    },'json');
+}
+function decrease_quantity(rec_id){
+    var item = $('#input_item_' + rec_id);
+    var orig = Number(item.val());
+    if(orig > 1){
+
+    var pricemodel  = $('#cart_item_' + rec_id);
+    var single      = pricemodel.find('.price1').text();
+	    single      = Number(single.replace("¥", ""));
+    //小计金额
+    var singlemodel = $('#item'+rec_id+'_subtotal');
+    var singlenums  = Number(singlemodel.text().replace("¥", ""));
+        singlenums  = toDecimal(singlenums - single);
+                      singlemodel.text('¥'+singlenums);
+    //总计金额
+    var totalmodel  = $('#cart_amount');
+    var totalnums   = Number(totalmodel.text().replace("¥", ""));
+        totalnums   = toDecimal(totalnums - single);
+                      totalmodel.text('¥'+totalnums);
+        item.val(orig - 1);
+        item.attr('changed',orig);
+        item.keyup();
+    }
+}
+function add_quantity(rec_id){
+    var item = $('#input_item_' + rec_id);
+    var orig = Number(item.val());
+    var pricemodel  = $('#cart_item_' + rec_id);
+    var single      = pricemodel.find('.price1').text();
+	    single      = Number(single.replace("¥", ""));
+		
+    //小计金额
+    var singlemodel = $('#item'+rec_id+'_subtotal');
+    var singlenums  = Number(singlemodel.text().replace("¥", ""));
+        singlenums  = toDecimal(singlenums + single);
+                      singlemodel.text('¥'+singlenums);
+    //总计金额
+    var totalmodel  = $('#cart_amount');
+    var totalnums   = Number(totalmodel.text().replace("¥", ""));
+        totalnums   = toDecimal(totalnums + single);
+                      totalmodel.text('¥'+totalnums);
+    item.attr('changed',orig);
+    item.val(orig + 1);
+    item.keyup();
+}
+function toDecimal(x) {    
+     var val = Number(x)   
+    if(!isNaN(parseFloat(val))) {    
+       val = val.toFixed(2);    
+    }    
+    return  val;     
+} 
+</script>
+<div id="content" style="top: 45px;">
+<?php if(count($_SESSION['cart'])==0){ ?>
+    <div class="null_shopping">
+          <div class="cart_pic"></div>
+          <h4>亲~ 您还没有宝贝</h4>
+          <p><a class="enter" href="#">赶快点击左上角选一家逛逛吧！</a></p>
+      </div>  
+   <?php }else{  ?>   
+   <h3 id="chose_all"><b class="ico">全部商品</b></h3>
+    <ul class="cart_list">
+     <volist name='item' id='vo'>
+         <li id="cart_item_{$vo.id}">
+              <p class="goods_info">
+                  <span class="img"><a href="{:U('Article/detail',array('id'=>$vo['id']))}" ><img src="{$vo.img}" height="80" width="80"></a></span>
+                  <span class="tit">
+                      <a href="{:U('Article/detail',array('id'=>$vo['id']))}" >{$vo.name}</a><br>
+                      <span>价格:</span><span class="price1">¥{$vo.price}</span><br>
+                      <span>数量:</span>
+                      <span>
+                          <img src="__PUBLIC__/logic/shop/weixin/images/subtract.gif" onClick="decrease_quantity({$vo.id});" alt="decrease" style="vertical-align: middle;width=:16px">
+                           <input id="input_item_{$vo.id}" value="{$vo.num}" orig="1" changed="{$vo.num}" onKeyUp="change_quantity({$vo.id}, this);" class="text1 width3" type="text" style="height:20px;">
+                          <img src="__PUBLIC__/logic/shop/weixin/images/adding.gif" id="addquan" onClick="add_quantity({$vo.id});" alt="increase" style="vertical-align: middle;width=:16px">
+                      </span><br>
+                      <span>
+                          <a class="del" href="javascript:;" onClick="drop_cart_item({$vo.id});"> <img src="__PUBLIC__/logic/shop/weixin/images/del.png"  style="vertical-align: middle;height:20px;width=:20px"></a>
+                      </span>
+                  </span>
+              </p>
+              <p class="buy_info">
+                  <span class="total">
+                      <span>小计:</span>
+                      <span class="price2" id="item{$vo.id}_subtotal">¥<?php echo sprintf("%01.2f",$vo['num']*$vo['price']); ?></span>
+                  </span>
+              </p>                        
+          </li>
+          </volist>
+    </ul>
+   
+    <div class="buy_foot">
+        <p class="goods_amount">
+            <span>商品总价:</span>
+            <strong class="fontsize1" id="cart_amount">¥{$sumPrice}</strong>
+        </p>
+        <p class="jiesuan_btn">
+            <a href="{:U('Shop/jiesuan')}" class="btn"><span>去结算</span><img src="__PUBLIC__/logic/shop/weixin/images/jiesuan.png" width="50%"></a>
+        </p>
+    </div>
+    <?php } ?>
+</div>
+</body>
+<include file="Public/weixinjs"/>
+</html>
