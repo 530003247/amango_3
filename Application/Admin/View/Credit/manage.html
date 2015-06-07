@@ -1,0 +1,87 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>用户积分记录</h2>
+
+	</div>
+    <div class="tools">
+	    <a class="btn" href="{:U('Credit/index')}">返回积分规则列表</a>
+	    <button class="btn ajax-post" target-form="ids" url="{:U('creditdel')}">批 量 清 空【建议月初集中清理】</button>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">用户ID</th>
+		<th class="">激活标签</th>
+		<th class="">添加方式</th>
+		<th class="">分值</th>
+		<th class="">备注</th>
+		<th class="">时间</th>
+		<!--<th class="">一键导出SQL</th>-->
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+			<td>{$vo.user_id}</td>
+			<td>{$vo.action}</td>
+			<td>{$vo.add_type}</td>
+			<td>{$vo.credits}</td>
+			<td>{$vo.remark}</td>
+			<td>{$vo.create_time|date="Y-m-d H:s:i",###}</td>
+			<!--
+			<td>
+                <a href="{:U('model/export?type=0&id='.$vo['id'])}">安装流程</a>
+                <a href="{:U('model/export?type=1&id='.$vo['id'])}">卸载流程</a>
+            </td>
+			-->
+			<td>
+				<a href="{:U('creditdel?ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 暂时还没有记录! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+    $(function(){
+	 highlight_subnav("{:U('Credit/index')}");
+    	$("#search").click(function(){
+    		var url = $(this).attr('url');
+    		var status = $('select[name=status]').val();
+    		var search = $('input[name=search]').val();
+    		if(status != ''){
+    			url += '/status/' + status;
+    		}
+    		if(search != ''){
+    			url += '/search/' + search;
+    		}
+    		window.location.href = url;
+    	});
+})
+</script>
+</block>

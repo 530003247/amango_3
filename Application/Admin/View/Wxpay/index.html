@@ -1,0 +1,73 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>微信支付管理</h2>
+
+	</div>
+    <div class="tools">
+	    <button class="btn ajax-post" target-form="ids" url="{:U('Model/setStatus',array('status'=>1))}">批 量 删 除</button>
+        <a class="btn" href="{:U('useraddress_index')}">用户地址管理</a>
+		<a class="btn" href="{:U('config')}">微信支付配置</a>
+        <a class="btn" href="{:U('Wxpay/manage')}">查看支付记录</a>
+		<a class="btn" href="{:U('hongbaolist')}" style="background-color: rgb(255, 143, 0);">微信红包管理</a>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">订单编号</th>
+		<th class="">订单金额</th>
+		<th class="">收货人</th>
+		<th class="">联系号码</th>
+		<th class="">收货地址</th>
+		<th class="">备注</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.orderId} </td>
+			<td>{$vo.order_sumPrice}</td>
+			<td>{$vo.address_name}</td>
+			<td>{$vo.mobile}</td>
+			<td>{$vo.address}</td>
+            <td>{$vo.note}</td>
+			<th>
+                      <switch name="vo.status" >
+                         <case value="4">交易完成</case>
+                         <case value="2">待发货</case>
+                         <case value="3">待收货</case>
+                        <default />待付款
+                        </switch>			
+			</th>
+			<td>
+				<a href="{:U('order_detail?ids='.$vo['orderId'])}">查看</a>|<a href="{:U('deloreder?ids='.$vo['orderId'])}" class="confirm ajax-get">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+</block>

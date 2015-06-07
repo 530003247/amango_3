@@ -1,0 +1,122 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>微信支付配置</h2>
+	</div>
+    <div class="cf">
+		 <a class="btn" href="{:U('Wxpay/index')}">返回支付管理</a>
+	</div>
+		<div class="tab-wrap form-horizontal">
+<div class="form-item cf">
+					<label class="item-label">
+						可用方式:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                              <volist name="paylist" id="vo">
+				              <label class="checkbox"><input type="checkbox" value="{$key}" name="Allow_type[]" <in name="key" value="$info['Allow_type']">checked</in>>{$vo}</label>
+							  </volist>
+						</div>
+</div>
+<div class="form-item cf">
+					<label class="item-label"></label>
+					    <ul class="tab-nav nav">
+						<li data-tab="tab1" class="current"><a href="javascript:void(0);">微信支付配置</a></li>
+						<li data-tab="tab2" class=""><a href="javascript:void(0);">红包兑换参数</a></li>	
+						</ul>
+                    <div class="tab-content">
+								<div id="tab1" class="tab-pane tab1 in">
+					                  <label class="item-label"> appId:<span class="check-tips">微信公众号身份的唯一标识。审核通过后，在微信发送的邮件中查看</span></label>
+						              <div class="controls">
+                                      <input type="text" name="appId" class="text input-large" value="{$info.appId}">
+						              </div>
+					<label class="item-label">
+						Mchid:<span class="check-tips">受理商ID，身份标识</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="Mchid" class="text input-large" value="{$info.Mchid}">
+						</div>
+					<label class="item-label">
+						Key:<span class="check-tips">商户支付密钥Key。审核通过后，在微信发送的邮件中查看</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="Key" class="text input-large" value="{$info.Key}">
+						</div>		
+					<label class="item-label">
+						Appsecret:<span class="check-tips">JSAPI接口中获取openid，审核后在公众平台开启开发模式后可查看</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="Appsecret" class="text input-large" value="{$info.Appsecret}">
+						</div>
+					<label class="item-label">
+						证书路径设置:<span class="check-tips">支付证书路径</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" class="text input-large" value="{$path}">
+						</div>
+						<br>
+								</div>
+					            <div id="tab2" class="tab-pane  tab2">
+					<label class="item-label">
+						红包兑换:<span class="check-tips">关闭后，用户将无法兑换红包</span>					
+					</label>
+						<div class="controls">
+							<select name="hb_dh_auth">
+									<option value="1" <eq name="info.hb_dh_auth" value="1">selected</eq>>开启</option>
+									<option value="0" <eq name="info.hb_dh_auth" value="0">selected</eq>>关闭</option>
+                            </select>
+						</div>
+					<label class="item-label">
+						红包抵用:<span class="check-tips">关闭后，用户支付时候将无法使用红包抵用支付</span>					
+					</label>
+						<div class="controls">
+							<select name="hb_dh_diyong">
+									<option value="1" <eq name="info.hb_dh_diyong" value="1">selected</eq>>开启</option>
+									<option value="0" <eq name="info.hb_dh_diyong" value="0">selected</eq>>关闭</option>
+                            </select>
+						</div>
+					<label class="item-label">
+						适用用户组:<span class="check-tips"><volist name="userlist" id="vo">【{$vo.followercate_name}:{$vo.followercate_title}】</label></volist></span>					
+					</label>
+					<label class="item-label">
+						累计兑换:<span class="check-tips">会员标识:面值（例如：高级会员每天最多兑换2000面值红包[vip5:2000]多个可以换行）</span>					
+					</label>
+                                                   <label class="textarea input-large">
+                                <textarea name="hb_leiji">{$info.hb_leiji}</textarea>
+                                </label>
+                                </div>
+				     </div>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;" style="display: none;">返 回</button>
+	
+        </div>
+
+	</div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+            //导航高亮
+            highlight_subnav("{:U('Wxpay/index')}");
+    </script>
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	if($('ul.tab-nav').length){
+		//当有tab时，返回按钮不显示
+		$('.btn-return').hide();
+	}
+	var $j = jQuery.noConflict();
+	$j(function(){
+    $j(".time").datetimepicker({
+	     language: 'zh',
+	     startView: 0,
+		 format: 'hh:ii'
+		 });
+		 showTab();
+    });
+</script>
+</block>

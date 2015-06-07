@@ -1,0 +1,80 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>红包兑换记录</h2>
+
+	</div>
+    <div class="tools">
+	    <a class="btn" href="{:U('Wxpay/hongbaolist')}">返回红包列表</a>
+	    <button class="btn ajax-post" target-form="ids" url="{:U('deluserhongbao')}">批 量 清 空【请勿清理截止日期前的兑换记录，否则将清空用户红包】</button>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">用户ID</th>
+		<th class="">红包面值</th>
+		<th class="">截止日期</th>
+		<th class="">操作方式</th>
+		<th class="">操作时间</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+			<td>{$vo.userid}</td>
+			<td>{$vo.hb_value}</td>
+			<td>{$vo.hb_end|date="Y-m-d H:s:i",###}</td>
+			<td><eq name="vo.type" value="1">兑换<else/>使用</eq></td>
+			<td>{$vo.create_time|date="Y-m-d H:s:i",###}</td>
+			<td><eq name="vo.status" value="1">开启<else/>关闭</eq></td>
+			<td>
+				<a href="{:U('deluserhongbao?ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 暂时还没有记录! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+    $(function(){
+	 highlight_subnav("{:U('Wxpay/index')}");
+    	$("#search").click(function(){
+    		var url = $(this).attr('url');
+    		var status = $('select[name=status]').val();
+    		var search = $('input[name=search]').val();
+    		if(status != ''){
+    			url += '/status/' + status;
+    		}
+    		if(search != ''){
+    			url += '/search/' + search;
+    		}
+    		window.location.href = url;
+    	});
+})
+</script>
+</block>

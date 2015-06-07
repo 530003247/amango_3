@@ -1,0 +1,69 @@
+<extend name="Public/base" />
+<block name="body">
+<link href="__ROOT__/Public/Admin/Addonsindex/css/common.css" rel="stylesheet" type="text/css">
+<link href="__ROOT__/Public/Admin/Addonsindex/css/bootstrap.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__ROOT__/Public/Admin/Addonsindex/script/jquery-1.7.2.min.js"></script>
+<style>.submit-btn{color:#fff;background-color:#cc3900}.has-api{z-index:9;position:absolute;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:15px solid #309;right:4px}.addon-id{z-index:9;position:absolute;width:0;height:0;border-top:34px solid #f60;border-right:24px solid transparent}.addon-id-num{z-index:10;position:absolute;margin-left:1px;margin-top:-3px;color:#fff}.set-btn{color:#fff;background-color:#04c}.f-btn{color:#fff;background-color:#cc3900}.s-btn{color:#fff;background-color:#4bbd00}.f-btn:hover{color:#fff;background-color:#ff2610}.s-btn:hover{color:#fff;background-color:#4cdb00}.set-btn:hover{color:#fff;background-color:#08c}</style>
+	<script type="text/javascript">
+		function toggle_description(id) {
+			var container = $('#'+id).parent().parent().parent();
+			var status = $('#'+id).attr("status");
+			if(status == 1) {
+				$('#'+id).attr("status", "0")
+				container.find(".module_description").show();
+			} else {
+				$('#'+id).attr("status", "1")
+				container.find(".module_description").hide();
+			}
+		}
+		$(function() {
+			$('.module .thumbnails').delegate('li', 'hover', function(){ //控制模块详细信息
+				$(this).find('.module-title,.module-brief').toggle();
+				$(this).find('.module-description').toggle('fast');
+			});
+		});
+	</script>
+	<!-- 标题栏 -->
+       <div>
+	   <h2>个性化模板</h2><br>
+		   <a href="#" class="btn">主题商店</a>
+		   <a class="btn" target="_blank">总共：{$themes}套</a>
+		</div>
+
+	<!-- 数据列表 -->
+	<div class="module" style="font: 14px/1.5 'microsoft yahei', Helvetica, Tahoma, Arial, sans-serif;color:#404040;">
+			<div class="row-fluid">
+			<ul class="thumbnails">		
+			<notempty name="_list">
+				<volist name="_list" id="vo">
+			<li style="width:20%; min-width:240px;background-color: gainsboro;">
+					<div class="thumbnail">
+						<div class="module-pic">
+							<img src="{$vo['INFO']['preview']}">
+							<div class="module-detail">
+								<h5 class="module-title"><b>{$vo.INFO.title}</b>&nbsp;{$vo.INFO.version}<small class="fr">{$vo.INFO.name}</small></h5>
+								<p class="module-description">名称：{$vo.INFO.title}<br>作者：{$vo.INFO.author}<br>简介：{$vo.INFO.description}</p>
+							</div>
+						</div>
+
+						<div class="module-button">
+						    <volist name="vo['LIST']" id="livo">
+							<a class="btn set-btn fr" >{$livo}:{$key}</a>
+							</volist>
+						</div>
+
+					</div>
+				</li>
+				</volist>
+				<else/>
+				<li colspan="6" class="text-center"> aOh! 暂时还没有个性化模板哦! </li>
+				</notempty>
+							</ul></div>
+			<div>
+							</div>
+		</div>
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>

@@ -1,0 +1,93 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>新增微信红包</h2>
+	</div>
+    <div class="cf">
+		 <a class="btn" href="{:U('Wxpay/hongbaolist')}">返回红包列表</a>
+	</div>
+		<div class="tab-wrap">
+		<form id="form" action="{:U('Wxpay/addhongbao')}" method="post" class="form-horizontal">
+		   <notempty name="info.id"><input type="hidden" name="id" value="{$info.id}"></notempty>
+		     <div class="form-item cf">
+               <div class="tab-content">
+					<label class="item-label">
+						红包名称:<span class="check-tips">简短描述该红包兑换简称</span>					
+					</label>
+					<div class="controls">
+                              <input type="text" name="title" class="text input-large" value="{$info.title}">
+						</div>
+					<label class="item-label">
+						适用用户组:<span class="check-tips">红包适用用户组,仅勾选的用户组有权限兑换该红包</span>					
+					</label>
+					<div class="controls">
+                              <volist name="userlist" id="vo">
+				              <label class="checkbox"><input type="checkbox" value="{$vo.followercate_title}" name="allow_group[]" <in name="vo.followercate_title" value="$info['allow_group']">checked</in>>{$vo.followercate_name}</label>
+							  </volist>
+						</div>
+					<label class="item-label">
+						开始时间:<span class="check-tips">该红包有效开始时间</span>					
+					</label>
+					<div class="controls">
+                                 <input type="text" name="start_time" class="text input-medium time"  value="<empty name='info.start_time'>{:date('Y-m-d H:s')}<else /> {$info.start_time|date='Y-m-d H:s',###}</empty>" placeholder="请选择开始日期" />
+							</div>
+					<label class="item-label">
+						截止时间:<span class="check-tips">若支持“参数”,可以按照参数要求填写下面的条件框</span>					
+					</label>
+					<div class="controls">
+                                 <input type="text" name="end_time" class="text input-medium time"  value="<empty name='info.end_time'>{:date('Y-m-d H:s')}<else /> {$info.end_time|date='Y-m-d H:s',###}</empty>"placeholder="请选择截止日期" />
+							</div>
+					<label class="item-label">
+						消耗积分:<span class="check-tips">消耗用户积分，只能为正整数</span>					
+					</label>
+					<div class="controls">
+                                 <input type="text" name="credits" class="text input-large" value="{$info.credits}">
+							</div>
+					<label class="item-label">
+						红包面值:<span class="check-tips">兑换的金币面值，例如：用户消耗1000积分兑换100个金币，在【消耗积分】填写1000，【红包面值】填写100</span>					
+					</label>
+					<div class="controls">
+                                 <input type="text" name="value" class="text input-large" value="{$info.value}">
+							</div>
+					<label class="item-label">
+						红包图标:<span class="check-tips">红包图标</span>					
+					</label>
+						<div class="controls">
+                             {:W('Formfields/show', array(array('type'=>'kingpicture','name'=>'img'), $info,'edit',array('id'=>'img')))}
+						</div>
+					<label class="item-label">
+						红包简介:<span class="check-tips">简要说明红包使用范围</span>					
+					</label>
+					<div class="controls">
+                                 <input type="text" name="desc" class="text input-large" value="{$info.desc}">
+							</div>
+				     </div><br>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;" style="display: none;">返 回</button>
+        </div>
+		</form>
+	</div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+            //导航高亮
+            highlight_subnav("{:U('Wxpay/index')}");
+    </script>
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	var $j = jQuery.noConflict();
+	$j(function(){
+    $j(".time").datetimepicker({
+	     language: 'zh',
+	     startView: 1,
+		 format: 'yyyy-mm-dd hh:ii'
+		 });
+    });
+</script>
+</block>

@@ -1,0 +1,119 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>积分规则编辑-“”</h2>
+	</div>
+    <div class="cf">
+		 <a class="btn" href="{:U('Credit/index')}">返回积分规则列表</a>
+	</div>
+		<div class="tab-wrap form-horizontal">
+            <input type="hidden" name="id" value="{$info.id}">
+		     <div class="form-item cf">
+               <div class="tab-content">
+					<label class="item-label">
+						激活区域:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+							<select name="type" id="jftype">
+							      <option value="CMS" <eq name="info['type']" value="CMS">selected</eq>>网站</option>
+								  <option value="WEIXIN" <eq name="info['type']" value="WEIXIN">selected</eq>>微信</option>
+                            </select>
+						</div>
+					<label class="item-label">
+						用户所在组:<span class="check-tips">激活用户所在分组</span>					
+					</label>
+						<div class="controls">
+							<select name="usergroup">
+							        <volist name="usergroup" id="listinfo">
+									     <option value="{$key}" <eq name="info['usergroup']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select>
+						</div>
+					<label class="item-label">
+						用户行为:<span class="check-tips">若支持“条件”,可以按照条件填写下面的条件框,含有多个，请使用,分割</span>					
+					</label>
+						<div class="controls">
+							<select id="WEIXIN" style="display:none;">
+							        <volist name="actionlist['WEIXIN']" id="listinfo">
+									     <option value="{$key}" <eq name="info['action']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select>
+							<select name="action" id="CMS">
+							        <volist name="actionlist['CMS']" id="listinfo">
+									     <option value="{$key}" <eq name="info['action']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select> <input type="text" id="action_param" name="action_param" class="text input-large" value="{$info['action_param']}">
+						</div>
+					<label class="item-label">
+						行为周期:<span class="check-tips">若支持“参数”,可以按照参数要求填写下面的条件框</span>					
+					</label>
+					<div class="controls">
+							<select name="zhouqi">
+							        <volist name="zhouqi" id="listinfo">
+									     <option value="{$key}"<eq name="info['zhouqi']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select><input type="text" name="zhouqi_param" class="text input-large" value="{$info['zhouqi_param']}">
+							</div>
+					<label class="item-label">
+						行为频率:<span class="check-tips">若支持“参数”,可以按照参数要求填写下面的条件框</span>					
+					</label>
+					<div class="controls">
+							<select name="pinlv">
+							        <volist name="pinlv" id="listinfo">
+									     <option value="{$key}" <eq name="info['pinlv']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select><input type="text" name="pinlv_param" class="text input-large" value="{$info['pinlv_param']}">
+							</div>
+					<label class="item-label">
+						积分方式:<span class="check-tips">请选择正确的积分统计方式</span>					
+					</label>
+					<div class="controls">
+							<select name="value_type">
+							        <volist name="addtype" id="listinfo">
+									     <option value="{$key}"  <eq name="info['value_type']" value="$key">selected</eq>>{$listinfo}</option>
+                                    </volist>
+                            </select> <input type="text" name="value" class="text input-large" value="{$info['value']}">
+							</div>
+					<label class="item-label">
+						规则状态:<span class="check-tips"></span>					
+					</label>
+					<div class="controls">
+							<select name="status">
+								 <option value="1"  <eq name="info['status']" value="1">selected</eq>>开启</option>
+								 <option value="0"  <eq name="info['status']" value="0">selected</eq>>关闭</option>
+                            </select>
+							</div>
+								<!---
+                                <div id="tab3" class="tab-pane  tab3">
+								</div>-->
+				     </div>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;" style="display: none;">返 回</button>
+	
+        </div>
+	</div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+            //导航高亮
+            highlight_subnav("{:U('Credit/index')}");
+	if($('ul.tab-nav').length){
+		//当有tab时，返回按钮不显示
+		$('.btn-return').hide();
+	}
+
+$("#jftype").change(function(){
+   var seval = $(this).val();
+   $('#'+seval).show();
+   $('#action_param').val('');
+   if(seval=='WEIXIN'){
+       $('#CMS').hide();
+   }  else {
+       $('#WEIXIN').hide();
+   }
+});
+    </script>
+
+</block>

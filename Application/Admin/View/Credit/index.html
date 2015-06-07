@@ -1,0 +1,64 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>积分规则管理</h2>
+
+	</div>
+    <div class="tools">
+	    <button class="btn ajax-post" target-form="ids" url="{:U('Model/setStatus',array('status'=>1))}">批 量 删 除</button>
+        <a class="btn" href="{:U('add')}">新 增 规 则</a>
+        <a class="btn" href="{:U('Credit/manage')}">查看积分记录</a>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">类型</th>
+		<th class="">动作</th>
+		<th class="">用户组</th>
+		<th class="">添加</th>
+		<th class="">分值</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+			<td>{$vo.type}</td>
+			<td>{$vo.action}</td>
+			<td>{$vo.usergroup}</td>
+			<td>{$vo.value_type}</td>
+			<td>{$vo.value}</td>
+			<th><eq name="vo['status']" value="1">开启<else/>关闭</eq></th>
+			<td>
+				<a href="{:U('edit?ids='.$vo['id'])}">编辑</a>|<a href="{:U('del?ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+</block>

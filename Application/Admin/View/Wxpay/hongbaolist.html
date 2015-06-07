@@ -1,0 +1,66 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="main-title">
+		<h2>微信红包管理</h2>
+
+	</div>
+    <div class="tools">
+	    <a class="btn" href="{:U('Wxpay/index')}">返回订单列表</a>
+	    <button class="btn ajax-post" target-form="ids" url="{:U('Model/delhongbao',array('status'=>1))}">批 量 删 除</button>
+        <a class="btn" href="{:U('addhongbao')}">新增红包</a>
+		<a class="btn" href="{:U('hongbaomanage')}" style="background-color: rgb(255, 143, 0);">红包兑换记录</a>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">名称</th>
+		<th class="">图标</th>
+		<th class="">简介</th>
+		<th class="">开始日期</th>
+		<th class="">截止日期</th>
+		<th class="">分值</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+			<td>{$vo.title}</td>
+			<td><img src="{$vo.img} " width="50" height="50"></td>
+			<td>{$vo.desc}</td>
+			<td>{$vo.start_time|date='Y-m-d H:i:s',###}</td>
+            <td>{$vo.end_time|date='Y-m-d H:i:s',###}</td>
+			<th>{$vo.credits}</th>
+			<td><a href="{:U('edithongbao?ids='.$vo['id'])}">编辑</a>|<a href="{:U('delhongbao?ids='.$vo['id'])}" class="confirm ajax-get">删除</a></td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+    $(function(){
+	 highlight_subnav("{:U('Wxpay/index')}");
+})
+</script>
+</block>

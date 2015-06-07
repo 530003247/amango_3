@@ -1,0 +1,59 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>查看订单</h2><br>
+	</div>
+        <h3>订单号：{$order.orderId} -总金额：{$order.order_sumPrice}元</h3>
+        <h3>联系人：{$order.address_name} -联系方式：{$order.mobile} -联系地址：{$order.address}</h3><br><br>
+    <div class="tools">
+	    <a class="btn" href="{:U('Wxpay/index')}">返回订单管理</a>
+		<a class="btn confirm ajax-get"  href="{:U('setstatus',array('type'=>'2','ids'=>$order['orderId']))}">设为【已付款】</a>
+		<a class="btn confirm ajax-get" href="{:U('setstatus',array('type'=>'3','ids'=>$order['orderId']))}">设为【已发货】</a>
+		<a class="btn confirm ajax-get" href="{:U('setstatus',array('type'=>'4','ids'=>$order['orderId']))}">设为【完成】</a>
+		<a class="btn confirm ajax-get" href="{:U('deloreder?ids='.$order['orderId'])}" style="background-color: red;">取消该订单</a>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="">商品名称</th>
+		<th class="">预览图片</th>
+		<th class="">价格</th>
+		<th class="">数量</th>
+		</tr>
+    </thead>
+    <tbody>
+	<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+			<td>{$vo.title} </td>
+			<td><img src="{$vo.img} " width="60" height="80"></td>
+			<td>{$vo.price}</td>
+			<td>{$vo.quantity}</td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="8" class="text-center"> aOh! 没有详细商品清单! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+            //导航高亮
+            highlight_subnav("{:U('Wxpay/index')}");
+    </script>
+</block>
