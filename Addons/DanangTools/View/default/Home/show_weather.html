@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>岘港天气</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" /> 
+  <meta content="yes" name="apple-mobile-web-app-capable" /> 
+  <meta http-equiv="Cache-Control" content="no-cache" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="description" content="" /> 
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" /> 
+  <link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/home_weather/css/style_004.css" /> 
+  <link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/home_weather/css/style.css" /> 
+  <link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/home_weather/css/style_003.css" /> 
+  <link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/home_weather/css/style_002.css" /> 
+  <link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/home_weather/css/ctrl.css" /> 
+  <style>
+  .weather_w_35
+  {
+  max-width:64px;
+  }
+  .weather_w_35 img
+  {
+  width:100%;
+  }
+  </style>
+ </head> 
+ <body> 
+  <div> 
+   <!-- 首页天气 --> 
+   <div class="inx_w_cont"> 
+    <dl class="inx_w_cont_dl"> 
+     <dt> 
+      <div class="inx_w_city"> 
+       <p class="inx_w_city_c">岘港</p> 
+       <p class="inx_w_city_e">Da Nang</p> 
+       <p class="inx_w_city_e">越南</p> 
+      </div> 
+      <div class="inx_w_pic">
+       <img src="ADDON_PUBLIC/home_weather/css/duoyun_0.png" alt="" />
+      </div> 
+     </dt> 
+     <dd> 
+      <p class="inx_w_r_num"><strong class="">{$today.high}</strong>℃</p> 
+      <p class="inx_w_r_mare"> {$today.type}<br /> 风速 {$wind}级 <br /> 湿度 {$humi}φ</p> 
+      <p class="inx_w_r_time"> <?php echo date("m月d日 h时i分"); ?></p>
+     </dd> 
+    </dl> 
+   </div> 
+   <!-- card容器 --> 
+   <div class="card_wrap"> 
+    <div class="cardbox"> 
+     <h3 class="card_h3">最近预报</h3> 
+     <!---<div class="weather_list_wrap" id="wrapper"> 
+      <div style="width: 960px; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);" class="weather_list_items" id="scroller"> 
+       <div class="weather_list_items_t j_box"> 
+        <p>22:00</p> 
+        <p><img src="css/zhenyu_2.png" alt="" /></p> 
+        <p>17℃</p> 
+       </div> 
+      </div> 
+     </div> --->
+     <ul class="weather_datemate">
+<volist name="weatherlist" id="vo">
+<li>
+<p class="weather_w_20"> <strong>{$vo.name}</strong> <span>{$vo.date}</span> </p>
+<p class="weather_w_25"> <span>{$vo.type}</span> <span>{$vo.type}</span> </p> 
+<p class="weather_w_35"><img src="ADDON_PUBLIC/{$vo.pic}" alt=""></p>
+<p class="weather_w_20" style="text-align:right"> <span>{$vo.high}℃</span> <span>{$vo.low}℃</span> </p> 
+</li> 
+</volist>
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+ </body>
+</html>

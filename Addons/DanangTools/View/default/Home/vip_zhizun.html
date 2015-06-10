@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="applicable-device" content="mobile" />
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+<title>{$Title}</title>
+<style type="text/css">
+body
+{
+margin:0;
+padding:0;
+background-image:url(ADDON_PUBLIC/viphome/bg3.jpg);
+background-size:100%;
+}
+.user-main
+{
+margin: 10% auto;
+max-width: 640px;
+background-image:url(ADDON_PUBLIC/viphome/vipmainbg.jpg);
+background-size:100% auto;
+padding:20px 10px;
+border-radius:10px;
+border:1px solid #ddd;
+box-shadow:0 0 20px #ddd;
+}
+.user-main p
+{
+text-indent:2em;
+}
+
+.user-main button {
+    background: none repeat scroll 0 0 rgb(231, 247, 9);
+    border: 1px solid rgb(231, 247, 9);
+    border-radius: 6px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.main-button-box
+{
+width:100%;
+text-align: center;
+margin: 10px auto;
+}
+
+.viplevel
+{
+font-size:0.6em;
+color:rgb(93, 93, 93);
+font-style:italic;
+}
+</style>
+</head>
+ <body>
+<div style="padding:10%">
+<div class="user-main">
+<h3>尊贵的{$nickname}<span class="viplevel">[{$name}会员]</span></h3>
+<h4>您好：</h4>
+<p>如果您近期计划莅临岘港，请您点击下方按键
+<div class="main-button-box"><a href="{:addons_url('vip_card')}"><img src="ADDON_PUBLIC/viphome/icon.png"></a></div>
+我们将为您准备好一切。</p>
+<div style="clear:both"></div>
+</div>
+<div style="margin:0 auto;max-width: 640px;"><h2 style="float:right;font-style:italic;">恭候您的光临</h2></div>
+</div>
+</body>
+<include file="Public/weixinjs"/>
+</html>

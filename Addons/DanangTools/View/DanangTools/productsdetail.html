@@ -1,0 +1,129 @@
+<extend name="Public/base" />
+<block name="body">
+<div class="main-title cf">
+		<h2>旅行定制-订单详情【编号:{$info}】</h2>
+	</div>
+    <div class="cf">
+        <a class="btn" href="{:U('Addons/adminList',array('name'=>'DanangTools'))}">返回订单列表</a>
+    </div>
+	<form action="__SELF__" class="form-horizontal" method="post">
+        <input type="hidden" name="id" class="text input-large" value="{$info.id}">
+		     <div class="form-item cf">
+					<label class="item-label">
+						下单日期:<span class="check-tips"></span>
+					</label>
+						<div class="controls">
+                             <input type="text" name="keyword" class="text input-large" value="{$info['creattime']|date='Y-m-d',###}" disabled>
+						</div>
+		     </div>
+		     <div class="form-item cf">
+					<label class="item-label"></label>
+					    <ul class="tab-nav nav">
+						<li data-tab="tab1" class="current"><a href="javascript:void(0);">订单信息</a></li>
+						<li data-tab="tab2" ><a href="javascript:void(0);">客户信息</a></li>	
+						</ul>
+                    <div class="tab-content">
+								<div id="tab1" class="tab-pane in tab1">
+					                  <label class="item-label"> 接待日期:<span class="check-tips">客户到访日期</span></label>
+						              <div class="controls">
+                                      <input type="text" name="title" class="text input-large" value="{$info['timeinfo']|date='Y-m-d',###}" disabled>
+						              </div>
+					<label class="item-label">
+						客户人数:<span class="check-tips">客户到访人数</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="author" class="text input-large" value="{$info.nums}" disabled>
+						</div>
+					<label class="item-label">
+						预订主题:<span class="check-tips">客户定制类型</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="author" class="text input-large" value="{$info.type}" disabled>
+						</div>
+					<label class="item-label">
+						接送车辆:<span class="check-tips">需要安排的接送车辆类型</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="author" class="text input-large" value="{$info.bustype}" disabled>
+						</div>
+					<label class="item-label">
+						房间类型:<span class="check-tips">客户预订房间类型</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="author" class="text input-large" value="{$info.romtype}" disabled>
+						</div>
+					<label class="item-label">
+						租赁汽车:<span class="check-tips">客户到访后是否租用汽车</span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="author" class="text input-large" value="{$info.renttype}" disabled>
+						</div>
+					<label class="item-label">
+						VIP备注:<span class="check-tips">用户其他需求</span>					
+					</label>
+                   {:W('Formfields/show', array(array('type'=>'textarea',name=>'desc'),$info,'edit'))}
+				   <br>
+								</div>
+					            <div id="tab2" class="tab-pane  tab2">
+					<label class="item-label">
+						客户姓名:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.name}" disabled>
+						</div>
+					<label class="item-label">
+						性别:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.sex}" disabled>
+						</div>
+					<label class="item-label">
+						护照号:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.passport}" disabled>
+						</div>
+					<label class="item-label">
+						移动电话:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.tel}" disabled>
+						</div>
+					<label class="item-label">
+						座机号码:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.phone}" disabled>
+						</div>
+					<label class="item-label">
+						邮箱:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info.email}" disabled>
+						</div>
+					<label class="item-label">
+						生日:<span class="check-tips"></span>					
+					</label>
+						<div class="controls">
+                             <input type="text" name="score" class="text input-large" value="{$info['birthday']|date='Y-m-d',###}" disabled>
+						</div>
+                                </div>
+				     </div>
+		            <button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">提醒客户，我们收到，正在安排相关事宜...</button>
+	</form>
+        </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+            //导航高亮
+            highlight_subnav('{:U('Addons/adminList',array('name'=>'DanangTools'))}');
+	if($('ul.tab-nav').length){
+		//当有tab时，返回按钮不显示
+		$('.btn-return').hide();
+	}
+	$(function(){
+		//支持tab
+		showTab();
+	})
+    </script>
+</block>

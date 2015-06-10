@@ -1,0 +1,71 @@
+    <div class="cf">
+        <button class="btn ajax-post confirm" style="background-color: #CC3900;" url="{:addons_url('DanangTools://DanangTools/del')}" target-form="ids">批量删除定制</button>
+		<button class="btn ajax-post confirm" style="background-color: #0039CC;" url="{:addons_url('DanangTools://DanangTools/tips')}" target-form="ids">提醒客户</button>
+		<a class="btn" href="{:addons_url('DanangTools://DanangTools/diyproducts')}">设置产品链接</a>
+		<a class="btn" href="{:addons_url('DanangTools://DanangTools/diyviprules')}">设置会员规则</a>
+		<a class="btn" href="{:addons_url('DanangTools://DanangTools/diyviplinks')}">设置活动链接</a>
+		<a class="btn" href="{:addons_url('DanangTools://DanangTools/diyvipinfo')}">设置特权说明</a>
+    </div>
+	<br>
+<table>
+	<thead>
+		<tr>
+		    <th class="row-selected">
+                <input class="checkbox check-all" type="checkbox">
+            </th>
+			<th>ID</th>
+			<volist name="listKey" id="vo">
+				<th>{$vo}</th>
+			</volist>
+			 <th>操作</th> 
+		</tr>
+	</thead>
+	<?php
+        $allow_type = array('marry'=>'婚礼','meet'=>'会议','golf'=>'高尔夫','party'=>'派对','conference'=>'发布会','other'=>'其他');
+		$sex_type   = array('女士','男士');
+	?>
+	<form id="ids">
+	<tbody>
+		<volist name="_list" id="lv" key="vo">
+		<tr>
+						<td><input class="ids" type="checkbox" value="{$lv.id}" name="id[]"></td>
+						<td>{$lv.id}</td>
+						<volist name="listKey" id="lk">
+					    	<td>
+							<in name="key" value="creattime,timeinfo">
+							{$lv[$key]|date="Y-m-d",###} 
+							<else/>
+								             <eq name="key" value="fromusername">
+											    {$lv[$key]}
+										     <else/>
+								                <eq name="key" value="type">
+											        {$allow_type[$lv['type']]}
+										        <else/>
+								                   <eq name="key" value="sex">
+											        {$sex_type[$lv['sex']]}
+										           <else/>
+                                                    {$lv.$key}
+											       </eq>
+											    </eq>
+											 </eq>
+							</in>
+							</td>
+						</volist>
+			<td>
+				<a class="update" href="{:addons_url('DanangTools://DanangTools/productsdetail',array('id'=>$lv['id']))}">详细</a>|<a class="update" href="{:addons_url('DanangTools://DanangTools/del',array('id'=>$lv['id']))}">删除</a>
+			</td>
+		</tr>
+		</volist>
+	</tbody>
+	</form>
+</table>
+<block name="script">
+	<script type="text/javascript">
+		$(function(){
+	        //全选节点
+	        $('.check-all').on('change',function(){
+	            $('.ids').prop('checked',this.checked);
+	        });
+		})
+	</script>
+</block>

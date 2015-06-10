@@ -1,0 +1,153 @@
+﻿<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="applicable-device" content="mobile" />
+<meta name="viewport" content="width=640" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="">
+<meta name="format-detection" content="telephone=no">
+<title>岘港地图</title>
+<script src="http://ag.amango.net/Application/Home/View/default/ASSET/amui/gmu/zepto.js"></script>
+<link rel="stylesheet" type="text/css" href="ADDON_PUBLIC/css/style.css" />
+<style>
+.wrapper{ width:640px; margin:0 auto; position:relative;}
+.mapContent{ width:640px; background:url(ADDON_PUBLIC/images/map-640.jpg) no-repeat center top; height:1138px;}
+.mapContent .naver{}
+.mapContent .naver li{}
+.mapContent .naver .n1{width:50px; height:50px; position:absolute; left:5px; top:134px;}
+.mapContent .naver li a{ display:block;width:50px; height:50px; text-indent:-999em; }
+.mapContent .naver .n2{width:50px; height:50px; position:absolute; left:250px; top:245px;}
+.mapContent .naver .n3{width:50px; height:50px; position:absolute; left:217px; top:303px;}
+.mapContent .naver .n4{width:50px; height:50px; position:absolute; left:5px; top:388px;}
+.mapContent .naver .n5{width:50px; height:50px; position:absolute; left:397px; top:468px;}
+.mapContent .naver .n6{width:50px; height:50px; position:absolute; left:10px; top:901px;}
+.mapContent .naver .n7{width:50px; height:50px; position:absolute; left:569px; top:701px;}
+.mapContent .naver .n8{width:50px; height:50px; position:absolute; left:577px; top:766px;}
+.mapContent .naver .n9{width:50px; height:50px; position:absolute; left:548px; top:813px;}
+.mapContent .naver .n10{width:50px; height:50px; position:absolute; left:501px; top:839px;}
+ @media screen and (max-width: 650px) {}
+ @media screen and (max-width: 480px) {}
+        .black_overlay{ 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+			bottom: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88);
+			transition: opacity 0.15s ease 0s;
+        } 
+        .white_content { 
+            position: fixed; 
+            top: 10%; 
+            left: 8%; 
+            width: 75%; 
+             
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+			border-radius: 5px;
+        } 
+		.div-close
+		{
+	 background-color: rgb(255, 165, 0);
+    border-bottom-left-radius: 50%;
+    color: white;
+    font-size: 3em;
+    margin: 0 auto;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+		}
+		.box-main img
+		{
+		width:100%;
+		height
+		}
+		.box-main
+		{
+		margin:60px 10px 10px;
+		}
+		.box-main p
+		{
+		font-size: 2em;
+		line-height: 1.2;
+		text-indent:2em;
+		margin: 35px 0;
+		}
+		.box-main p:first-letter
+		{
+		font-size:2em;
+		}
+		.box-main-h1
+		{
+		font-size: 2.5em;
+		line-height: 1.2em;
+		margin: 5px 0;
+		}
+		#light
+		{
+		display:none
+		}
+</style>
+</head>
+<body >
+<div class="wrapper">
+<div  class="mapContent">
+    <div class="naver">
+      <ul>
+        <li class="n2"><a title="" desc="" pic="ADDON_PUBLIC/images/shancha.jpg">山荣半岛</a></li>
+        <li class="n3"><a  title="" desc="" pic="ADDON_PUBLIC/images/xiangangshiqu.jpg">岘港</a>  </li>
+        <li class="n4"><a title="" desc="" pic="ADDON_PUBLIC/images/banashan.jpg">巴拿山</a> </li>
+        <li class="n5"><a title="" desc="" pic="ADDON_PUBLIC/images/wuxing.jpg">五行山</a> </li>
+        <li class="n6"><a title="" desc="" pic="ADDON_PUBLIC/images/meishan.jpg">美山</a> </li>
+        <li class="n7"><a title="" desc="" pic="ADDON_PUBLIC/images/huian.jpg">会安</a> </li>
+        <li class="n8"><a title="" desc="" pic="ADDON_PUBLIC/images/jianandao.jpg">迦南岛</a> </li>
+        <li class="n9"><a title="" desc="" pic="ADDON_PUBLIC/images/zhanpodao.jpg">占婆岛</a> </li>
+        <li class="n10"><a title="" desc="" pic="ADDON_PUBLIC/images/yunhaiwan.jpg">海云湾</a> </li>
+      </ul>
+    </div>
+</div>
+</div>
+		<div id="light">
+		<div class="div-close"><a>X</a></div>		
+        <div class="white_content"> 		
+		<div class="box-main">
+		<div style="border:5px solid #ddd;border-radius:3px;">
+		<img id='mappics' src="ADDON_PUBLIC/images/shunhw.jpg"/>
+		</div>
+		<div class="box-main-h1" id='maptitle' align="center"></div>
+		<p id='mapdesc'></p>
+		</div>
+		</div>
+		</div>
+        <div id="fade" class="black_overlay"></div> 
+</body>
+<script type="text/javascript">
+    $(function ($) {
+	    $('.div-close').on('click', function () {
+            $('#light').hide();
+			$('#fade').hide();
+        });
+	    $('.naver li').on('click', function () {
+		    var mapmodel = $(this).children('a');
+            $('#mappics').attr('src',mapmodel.attr('pic'));
+            $('#maptitle').text(mapmodel.text());
+			$('#mapdesc').text(mapmodel.attr('desc'));
+
+            $('#light').show();
+			$('#fade').show();
+        });
+    }(Zepto));
+</script>
+</html>

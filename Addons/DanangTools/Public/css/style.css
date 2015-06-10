@@ -1,0 +1,167 @@
+﻿/*@charset "gb2312";*/
+/**
+ +------------------------------------------------------------------------------
+ * 网站样式重写
+ +------------------------------------------------------------------------------
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+html {
+	-webkit-text-size-adjust: none; /*解决chrome浏览器下字体不能小于12px*/
+}
+body {
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+* {
+}
+a {
+	outline: none;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+html {
+	zoom: 1;
+}
+html * {
+	outline: 0;
+	zoom: 1;
+}
+html button::-moz-focus-inner {
+border-color:transparent!important;
+}
+body {
+	overflow-x: hidden;
+	font-size: 12px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+table {/*border-collapse:collapse;border-spacing:0;*/
+}
+fieldset, a img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+q:before, q:after {
+	content: '';
+}
+input[type="submit"], input[type="reset"], input[type="button"], button {
+	-webkit-appearance: none; /*去掉苹果的默认UI来渲染按钮*/
+}
+em, i {
+	font-style: normal;
+}
+/**
+ +------------------------------------------------------------------------------
+ * Public Class
+ +------------------------------------------------------------------------------
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: block;
+}
+.clear {
+	clear: both;
+}/* 清除浮动*/
+.colwrapper {
+	overflow: hidden;
+	zoom: 1 /*for ie*/;
+	margin: 5px auto;
+}/* 高度自适应 */
+.strong {
+	font-weight: bold;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+.show {
+	display: block;
+	visibility: visible;
+}
+.hide {
+	display: none;
+	visibility: hidden;
+}
+.block {
+	display: block;
+}
+.inline {
+	display: inline;
+}
+.transparent {
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;/** Firefox 3.5即将原生支持opacity属性，所以本条属性只在Firefox3以下版本有效 ***/
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+.break {
+	word-wrap: break-word;
+	overflow: hidden; /*word-break:break-all;*/
+}
+.tal {
+	text-align: left
+}
+.tar {
+	text-align: right;
+}
+.toe{
+	/*超出省略号*/
+	 word-break:keep-all;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+/**
+ +------------------------------------------------------------------------------
+ * 网站整布局命名规范
+ +------------------------------------------------------------------------------
+ * @codex   id和class命名采用该版块的英文单词或组合命名 如:newRelease
+ * @package  ORG
+ * @subpackage  RBAC
+ +------------------------------------------------------------------------------
+ */
+body, input, textarea, select {
+	font-family: "微软雅黑", "黑体", Arial;
+	color: #333;
+	font-size:18px;
+	line-height: 30px;
+}
+body {
+	background:#E7DC8D;width:640px; margin:0 auto;
+}
+a {
+	color: #333;
+}

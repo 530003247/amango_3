@@ -1,0 +1,45 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title cf">
+    <h2>设置Vip待遇介绍</h2>
+	</div>
+	<form action="{:addons_url('DanangTools://DanangTools/diyvipinfo')}" class="form-horizontal" method="post">
+			      <div class="form-item cf">
+					<label class="item-label">
+						初级积分:<span class="check-tips">当会员积分 位于  0-初级积分，设置为初级会员</span></label>
+						     <div class="controls">
+								<input type="text" name="chuji" class="text input-large" value="{$score.0}">
+							</div>
+				</div>
+			      <div class="form-item cf">
+					<label class="item-label">
+						高级积分:<span class="check-tips">当会员积分 位于 初级积分-高级积分，设置为高级会员</span></label>
+						     <div class="controls">
+								<input type="text" name="gaoji" class="text input-large" value="{$score.1}">
+							</div>
+				</div>
+			      <div class="form-item cf">
+					<label class="item-label">
+						至尊积分:<span class="check-tips">当会员积分 大于 至尊积分，设置为至尊会员</span></label>
+						     <div class="controls">
+								<input type="text" name="zhizun" class="text input-large" value="{$score.2}">
+							</div>
+				</div>			       <div class="form-item cf">
+					<label class="item-label">
+						Vip待遇:<span class="check-tips">自由定义Vip待遇，支持html自由排版</span></label>
+                        {:W('Formfields/show', array(array('type'=>'editor','name'=>'vipdesc'),$vipdesc,'edit'))}
+					</div>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+	</form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //导航高亮
+            highlight_subnav('{:U('Addons/adminList',array('name'=>'DanangTools'))}');
+        });
+    </script>
+</block>

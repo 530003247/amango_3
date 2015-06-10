@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="applicable-device" content="mobile" />
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+<title>{$Title}</title>
+<style type="text/css">
+body
+{
+margin:0;
+padding:0;
+background-image:url(ADDON_PUBLIC/viphome/bg3.jpg);
+background-size:100%;
+}
+.user-main
+{
+margin: 10% auto;
+max-width: 640px;
+background-image:url(ADDON_PUBLIC/viphome/vipmainbg.jpg);
+background-size:100% auto;
+padding:20px 10px;
+border-radius:10px;
+border:1px solid #ddd;
+box-shadow:0 0 20px #ddd;
+}
+.user-main p
+{
+text-indent:2em;
+}
+
+.user-main button {
+    background: none repeat scroll 0 0 rgb(231, 247, 9);
+    border: 1px solid rgb(231, 247, 9);
+    border-radius: 6px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.main-button-box
+{
+width:100%;
+text-align: center;
+margin: 10px auto;
+}
+.user-level
+{
+margin:10px 0;
+width:100%;
+}
+.user-level li
+{
+width:33.33%;
+float:left;
+list-style:none;
+}
+.viplevel
+{
+font-size:0.6em;
+color:rgb(93, 93, 93);
+font-style:italic;
+}
+</style>
+</head>
+ <body>
+<div style="padding:10%">
+<div class="user-main">
+<h3>尊贵的{$nickname}<span class="viplevel">[{$name}会员]</span></h3>
+<h4>您好：</h4>
+<p>您现在的积分是{$score}分，恭喜您成为发岘会{$name}会员，请点
+<div class="main-button-box"><a href="{:addons_url('vip_huodon')}"><button>会员活动</button></a></div>
+查看您能够享受到的礼遇。
+</p>
+<h3><i>您的积分</i></h3>
+<div style="height:20px;width:100%;background-color:#FFFFFF;border:1px solid #FFEC2F;border-radius: 7px;box-shadow: 0 0 6px;"><div style="height:20px;width:{$progress}%;background-color:#FFEC2F"></div></div>
+<div class="user-level"><ul style="margin:0;padding:0"><li>初级</li><li style=" text-align: center;">高级</li><li><span style="float:right">至尊</span></li></ul></div>
+<div style="clear:both"></div>
+</div>
+<div style="margin:0 auto;max-width: 640px;"><h2 style="float:right;font-style:italic;">谢谢</h2></div>
+
+</div>
+</body>
+<include file="Public/weixinjs"/>
+</html>

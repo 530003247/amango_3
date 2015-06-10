@@ -1,0 +1,305 @@
+<!--  统一风格  采用模板渲染 插件通用模板addons 默认已加载 请参考 Amaze UI的css框架 -->
+<extend name="Base/addons"/>
+<block name="title">{$Title}</block>
+<block name="footer">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="ADDON_PUBLIC/mobiscroll.custom-2.13.1.min.css" rel="stylesheet" type="text/css" />
+<script src="ADDON_PUBLIC/mobiscroll.custom-2.13.1.min.js" type="text/javascript"></script>
+<style type="text/css">
+body
+{
+    background-image: url("/Addons/DanangTools/Public/viphome/bg.jpg");
+    background-size: 100% auto;}
+.am-titlebar {
+    font-size: 100%;
+	margin-top: 0px;
+}
+.am-titlebar-multi {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 2px solid #f37b1d;
+    display: flex;
+    overflow: hidden;
+}
+
+.am-titlebar-multi .am-titlebar-title {
+    color: #f37b1d;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 42px;
+    padding-left: 10px;
+    text-align: left;
+	text-align:center;
+}
+.am-titlebar h2 {
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+.am-panel
+{
+margin-top:10px;
+}
+
+.select-car ul .hover{border:3px solid #f37b1d;}
+
+.select-rom ul .hover{border:3px solid #f37b1d;}
+
+.select ul .button-hover
+	{
+	background-color: #f37b1d;
+    border-color: #f37b1d;
+    color: #fff;
+	}
+
+fieldset
+{
+margin:0;
+padding:0;
+}
+textarea
+{
+width:100%;
+}
+input
+{
+opacity: 0
+}
+</style>
+<script>
+
+
+$(function(){
+    $('#doc-ipt-warning').mobiscroll().date({
+        theme: 'mobiscroll',
+        lang: 'zh',
+        display: 'bottom',
+        mode: 'mixed',
+		startYear: '2015'
+    });    
+    $('#show').click(function(){
+        $('#doc-ipt-warning').mobiscroll('show'); 
+        return false;
+    });
+    $('#clear').click(function () {
+        $('#doc-ipt-warning').mobiscroll('clear');
+        return false;
+    });
+});
+</script>
+<form method="post" action="__SELF__">
+<div class="am-g am-g-fixed blog-g-fixed " >
+<!--
+<div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+<img style="position:relative;left:0;top: 5px;" src="ADDON_PUBLIC/diy_t/set_t_logo.png" alt=""/>
+</div>
+-->
+<div class="am-panel am-panel-warning">
+<div class="am-panel-hd">
+<h3 class="am-panel-title">请填写资料</h3>
+</div>
+<div class="am-panel-bd">
+    <label class="am-form-label" for="doc-ipt-warning">日期</label>
+    <input style="opacity:1" name="time" type="text" id="doc-ipt-warning" value="{$tinfo['timeinfo']|date='Y/m/d',###}" class="am-form-field">
+    <label class="am-form-label" for="doc-ipt-warning">客人数</label>
+	<div class="am-btn-group" style="width:100%;">
+	<button type="button" class="am-btn am-btn-warning am-round" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</button>
+	<input style="opacity:1;width: 100px;" type="text" name="nums" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" value="{$tinfo['nums']}" class="am-btn am-btn-warning am-round" />
+	<button type="button" class="am-btn am-btn-warning am-round" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</button>
+	</div>
+</div>
+</div>
+</div>
+<div class="am-g am-g-fixed blog-g-fixed" method="post" action="__SELF__">
+<fieldset>
+
+<div class="am-panel am-panel-warning">
+<div class="am-panel-hd">
+<h3 class="am-panel-title">请选择接送车辆</h3>
+</div>
+<div class="am-panel-bd">
+<div class="select-car"> 
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-3
+  md-block-grid-3 lg-block-grid-3 am-gallery-overlay" style="margin:-10px;" data-am-gallery="{ pureview: false }">
+<volist name="Bus_type" id="info" >
+  <li>
+	<label>
+    <div class="am-gallery-item">
+        <input type="radio" name="bustype" value="{$key}" <eq name="tinfo['bustype']" value="$key">checked</eq> >
+        <img src="ADDON_PUBLIC/diy_t/{$key}.jpg" alt="{$info}" />
+        <h3 class="am-gallery-title" align="center">{$info}</h3>
+    </div>
+	</label>
+  </li>
+</volist>
+</ul>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="am-panel am-panel-warning">
+<div class="am-panel-hd">
+<h3 class="am-panel-title">请选择房间类型</h3>
+</div>
+<div class="am-panel-bd">
+<div class="select-rom"> 
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-3
+  md-block-grid-3 lg-block-grid-3 am-gallery-overlay" style="margin:-10px;" data-am-gallery="{ pureview: false }">
+<volist name="Rom_type" id="info" >
+  <li>
+  <label>
+    <div class="am-gallery-item"><input type="radio" name="romtype" value="{$key}" <eq name="tinfo['romtype']" value="$key">checked</eq>>
+        <img src="ADDON_PUBLIC/diy_t/{$key}.jpg"
+        alt="{$info}" />
+        <h3 class="am-gallery-title" align="center">{$info}</h3>
+    </div>
+	</label>
+  </li>
+</volist>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="am-panel am-panel-warning">
+<div class="am-panel-hd">
+<h3 class="am-panel-title">是否租赁汽车</h3>
+</div>
+<div class="am-panel-bd">
+<div class="select"> 
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-2
+  md-block-grid-2 lg-block-grid-2 am-gallery-overlay" style="margin:-10px;" data-am-gallery="{ pureview: false }">
+<li>
+      <label>
+        <input type="radio"  value="1" name="rentcar" <eq name="tinfo['renttype']" value="1">checked</eq>>
+		<span class="am-btn am-btn-default">租赁</span>
+      </label>
+</li>
+<li>
+      <label>
+		<input type="radio"  value="0" name="rentcar" <eq name="tinfo['renttype']" value="0">checked</eq>>
+		<span class="am-btn am-btn-default">不租赁</span>
+      </label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="am-panel am-panel-warning">
+<div class="am-panel-hd">
+<h3 class="am-panel-title">备注需求</h3>
+</div>
+<div class="am-panel-bd">
+      <textarea class="" rows="5" id="doc-ta-1">{$tinfo['desc']}</textarea>
+</div>
+</div>
+<button type="submit" class="am-btn  am-btn-primary am-btn-block" style="margin: 10px auto;width: 100px;">完成预约</button>
+   </fieldset>
+
+</div> 
+</form>
+
+<script type="text/javascript" src="http://www.jb51.net/Public/js/jquery.min.js"></script>
+<script type="text/javascript"> 
+
+$(document).ready(function(){
+$(".select-car ul li img").click(function(){
+	$(".select-car ul li img").removeClass('hover');
+  $(this).addClass('hover');
+});
+
+
+ })
+ 
+ ;$(document).ready(function(){
+$(".select-rom ul li img").click(function(){
+	$(".select-rom ul li img").removeClass('hover');
+  $(this).addClass('hover');
+});
+
+
+ });
+ 
+ $(document).ready(function(){
+$(".select ul li span").click(function(){
+	$(".select ul li span").removeClass('button-hover');
+  $(this).addClass('button-hover');
+});
+	
+
+ });
+</script>
+
+<script type="text/javascript">
+var setAmount = {
+    min:1,
+    max:999,
+    reg:function(x) {
+        return new RegExp("^[1-9]\\d*$").test(x);
+    },
+    amount:function(obj, mode) {
+        var x = $(obj).val();
+        if (this.reg(x)) {
+            if (mode) {
+                x++;
+            } else {
+                x--;
+            }
+        } else {
+            alert("请输入正确的数量！");
+            $(obj).val(1);
+            $(obj).focus();
+        }
+        return x;
+    },
+    reduce:function(obj) {
+        var x = this.amount(obj, false);
+        if (x >= this.min) {
+            $(obj).val(x);
+            recalc();
+        } else {
+            alert("人数最少为" + this.min);
+            $(obj).val(1);
+            $(obj).focus();
+        }
+    },
+    add:function(obj) {
+        var x = this.amount(obj, true);
+        if (x <= this.max) {
+            $(obj).val(x);
+            recalc();
+        } else {
+            alert("人数最多为" + this.max);
+            $(obj).val(999);
+            $(obj).focus();
+        }
+    },
+    modify:function(obj) {
+        var x = $(obj).val();
+        if (x < this.min || x > this.max || !this.reg(x)) {
+            alert("请输入正确的数量！");
+            $(obj).val(1);
+            $(obj).focus();
+        }
+    }
+}
+
+function BuyUrl(wid) {
+    var pcounts = $("input[id^=qty_item_]").val();
+    var patrn = /^[0-9]{1,4}$/;
+    if (!patrn.exec(pcounts)) {
+        pcounts = 1;
+    }
+    else {
+        if (pcounts <= 0)
+            pcounts = 1;
+        if (pcounts >= 1000)
+            pcounts = 999;
+    }
+}
+;
+</script>
+
+</block>
+

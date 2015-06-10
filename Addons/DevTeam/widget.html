@@ -1,0 +1,66 @@
+<div class="span{$addons_config.width}">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>芒果微信公众号管理系统-使用指导 By 陈登禄</h5>
+			<div class="title-opt"><a href="http://www.amango.net" target="_blank" title="开发手册">★</a>
+			</div>
+		</div>
+		<div class="bd">
+			<div class="sys-info">
+				<table>
+					<tr>
+						<th>【第一步】文件覆盖</th>
+						<td>将Logo，二维码Qr图片覆盖,根目录下Public中的对应图片</td>
+					</tr>
+					<tr>
+						<th>【第二步】<a href="{:U('Config/group')}" target="_blank">网站设置</a></th>
+						<td>完善“网站标题”“网站关键词”“网站描述”</td>
+					</tr>
+					<tr> 
+						<th>【第三步】<a href="{:U('Think/lists',array('model'=>'account'))}" target="_blank">添加公众号</a></th>
+						<td>点击【新增】完善信息,将“默认公众号”设为“默认”<br>
+						</td>
+					</tr>
+					<tr>
+						<th>【第四步】<a href="https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=167991867&lang=zh_CN" target="_blank">公众平台</a>绑定</th>
+						<td>填写http://网站域名/Weixin/微信公众号原始ID.html</td>
+					</tr>
+					<tr>
+						<th>【第五步】<a href="{:U('Keywordview/addkeyword')}" target="_blank">添加关键词</a></th>
+						<td>记得选择【一键生成关键词模型】</td>
+					</tr>
+					<tr>
+						<th><font color="red">通用常量</font></th>
+						<td><font color="red">将下列的标识(仅支持大写)写入微信响应体任意位置自动替换</font></td>
+					</tr>
+					<tr>
+						<th>G_系列</th>
+						<td>公众号名称：G_WENAME<br>公众号昵称：G_WENICKNAME<br>公众客服号：G_WEQQ<br>公众微信号：G_WEACCOUNT<br>关注链接：G_WESUB<br>当前时间：G_TIME<br>当前日期：G_DATE<br>当前星期：G_WEEK</td>
+					</tr>
+					<tr>
+						<th>P_系列</th>
+						<td>用户昵称：P_NICKNAME<br>用户Openid：P_OPENID<br>用户性别：P_SEX<br>用户生日：P_BIRTHDAY<br>用户QQ：P_QQ<br>用户ID：P_ID；<br>注册时间：P_REGTIME<br>上次活动：P_LASTTIME<br>UC账号：P_UCUSERNAME<br>UC密码：P_UCPASSWORD<br>用户分组：P_CATE_GROUP<br>用户位置：P_LOCATION<br>用户状态：P_STATUS<br></td>
+					</tr>
+					<tr>
+						<th>U_系列</th>
+						<td>网站首页：U_INDEX<br>会员中心：U_CENTER<br>插件前端：U_插件标识_HOME_ADDON<br>插件个人中心：U_插件标识_PROFILE_ADDON<br>插件自定义：U_插件标识_操作名_ADDON</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="span{$addons_config.width}">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>官方视频</h5>
+			<div class="title-opt"><a href="http://v.youku.com/v_show/id_XNzE5NjU5NDk2.html?f=22299634&from=y1.7-1.3" target="_blank" title="视频教程">★</a>
+			</div>
+		</div>
+		<div class="bd">
+			<div class="sys-info">
+<embed src="http://player.youku.com/player.php/sid/XNzE5NjU5NDk2/v.swf" allowFullScreen="true" quality="high" width="570" height="250" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			</div>
+		</div>
+	</div>
+</div>

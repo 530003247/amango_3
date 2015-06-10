@@ -1,0 +1,25 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="main-title">
+        <h2>设置Vip产品服务链接</h2>
+    </div>
+	<form action="{:addons_url('DanangTools://DanangTools/diyproducts')}" class="form-horizontal" method="post">
+			      <div class="form-item cf">
+					<label class="item-label">
+						链接:<span class="check-tips">请将你定义的产品展示页面链接复制这里保存</span></label>
+						     <div class="controls">
+								<input type="text" name="productlinks" class="text input-large" value="{$productlinks}">
+							</div>
+				</div>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+	</form>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //导航高亮
+            highlight_subnav('{:U('Addons/adminList',array('name'=>'DanangTools'))}');
+        });
+    </script>
+</block>

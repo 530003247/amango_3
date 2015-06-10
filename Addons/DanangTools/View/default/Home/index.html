@@ -1,0 +1,154 @@
+<!--  统一风格  采用模板渲染 插件通用模板addons 默认已加载 请参考 Amaze UI的css框架 -->
+<extend name="Base/addons"/>
+<block name="title">会员返岘</block>
+<block name="footer">
+<style type="text/css">
+body
+{
+    background-image: url("");
+    background-size: 100% auto;
+}
+
+
+.am-panel {
+    border-radius: 5px;
+    margin: 0 10px 20px;
+}
+
+div#bg-div{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:-1;
+} 
+
+div#main-div{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:99;
+} 
+
+div#bg-div > img {
+    height:100%;
+    width:100%;
+    border:0;
+}
+ 
+.am-titlebar {
+    font-size: 100%;
+    height: auto;
+	margin-top: 0px;
+}
+.am-titlebar-multi {
+    background-color: rgba(245, 245, 245,0.7);
+    border-bottom: 1px solid #e8e8e8;
+    display: inherit;
+}
+.am-titlebar-multi .am-titlebar-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 10px;
+	text-align:center;
+}
+.am-titlebar-multi .am-titlebar-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 25px;
+    padding: 0 10px;
+    text-align: left;
+	color:#0e90d2;
+}
+
+.am-titlebar h2 {
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+
+.am-gallery li
+{
+height:25%;
+}
+
+.am-g-fixed, .am-gallery-item, .am-gallery-overlay ,.am-gallery-overlay .am-gallery-item img {
+    height: 100%;
+}
+
+</style>
+
+<div id="bg-div"><img src="/Addons/DanangTools/Public/viphome/newbg.jpg" /></div>
+<div id="main-div">
+<div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+  <h2 class="am-titlebar-title">欢迎来到会员返岘中心</h2>
+  <h2 class="am-titlebar-text" style="text-align:left;">您可以根据需要订制您的旅程，我们将为您提供全程服务。</h2>
+</div>
+<div class="am-g am-g-fixed blog-g-fixed ">
+<div style="margin: 20px 0px;"></div>
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-2
+  md-block-grid-2 lg-block-grid-2 am-gallery-overlay" data-am-gallery="{ pureview: false }">
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('vip_rules')}">
+        <img src="ADDON_PUBLIC/vipshow/v_rules.png"
+        alt="会员规则" />
+        <h3 class="am-gallery-title" align="center">会员规则</h3>
+      </a>
+    </div>
+  </li>
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('vip_huodon')}">
+        <img src="ADDON_PUBLIC/vipshow/v_huodon.png"
+        alt="会员活动" />
+        <h3 class="am-gallery-title" align="center">会员活动</h3>
+      </a>
+    </div>
+  </li>
+
+  <li>
+    <div class="am-gallery-item">
+     <!--   <a href="{:addons_url('diy_t')}"> </a> -->
+        <img src="ADDON_PUBLIC/vipshow/t_set.png"
+        alt="定制旅行" />
+        <h3 class="am-gallery-title" align="center">定制旅行</h3>
+      
+    </div>
+  </li>
+
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('vip_home')}">
+        <img src="ADDON_PUBLIC/vipshow/m_scores.png"
+        alt="我的积分" />
+        <h3 class="am-gallery-title" align="center">我的积分</h3>
+      </a>
+    </div>
+  </li>
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('p_buy')}">
+        <img src="ADDON_PUBLIC/vipshow/p_buy.png"
+        alt="产品购买" />
+        <h3 class="am-gallery-title" align="center">产品购买</h3>
+      </a>
+    </div>
+  </li>
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('vip_zhizun')}">
+        <img src="ADDON_PUBLIC/vipshow/m_vip.png"
+        alt="至尊会员" />
+        <h3 class="am-gallery-title" align="center">至尊会员</h3>
+      </a>
+    </div>
+  </li>
+</ul>
+
+  </div>
+</div>
+</block>

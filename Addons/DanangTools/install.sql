@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS `amango_addonsdntickets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fromusername` varchar(255) NOT NULL,
+  `timeinfo` varchar(100) NOT NULL,
+  `nums` int(13) NOT NULL,
+  `bustype` varchar(50) NOT NULL,
+  `romtype` varchar(50) NOT NULL,
+  `renttype` int(3) NOT NULL,
+  `desc` text NOT NULL,
+  `status` int(2) NOT NULL,
+  `creattime` int(13) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `sex` int(2) NOT NULL,
+  `passport` varchar(250) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `birthday` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='订单表' AUTO_INCREMENT=1 ;

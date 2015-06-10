@@ -1,0 +1,70 @@
+<!--  统一风格  采用模板渲染 插件通用模板addons 默认已加载 请参考 Amaze UI的css框架 -->
+<extend name="Base/addons"/>
+<block name="title">会员返岘</block>
+<block name="body">
+<style type="text/css">
+body
+{
+    background-image: url("/Addons/DanangTools/Public/viphome/bg.jpg");
+    background-size: 100% auto;
+	}
+.am-titlebar {
+    font-size: 100%;
+    height: auto;
+	margin-top: 0px;
+}
+.am-titlebar-multi {
+    background-color: rgba(245, 245, 245,0.7);
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 2px solid rgb(215, 169, 47);
+    display: inherit;
+}
+.am-titlebar-multi .am-titlebar-title {
+    color: rgb(215, 169, 47);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 42px;
+    padding-left: 10px;
+    text-align: left;
+	text-align:center;
+}
+
+.am-titlebar-multi .am-titlebar-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 25px;
+    padding: 0 10px;
+    text-align: left;
+	color:rgb(215, 169, 47);
+}
+
+.am-titlebar h2 {
+    font-size: 1.6rem;
+    margin: 0 auto;
+}
+</style>
+<div class="am-g am-g-fixed blog-g-fixed " >
+<div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+  <h2 class="am-titlebar-title">尊敬的贵宾您好，岘港欢迎您的光临。</h2>
+   <h2 class="am-titlebar-text" style="text-align:left;">  请选择您需要的产品。</h2>
+</div>
+  </div>
+</block>
+<block name="footer">
+<div class="am-g am-g-fixed blog-g-fixed " >
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-2
+  md-block-grid-2 lg-block-grid-2 am-gallery-overlay" data-am-gallery="{ pureview: false }">
+<volist name="T_type" id="info" >
+  <li>
+    <div class="am-gallery-item">
+      <a href="{:addons_url('set_t',array('type'=>$info[1]))}">
+        <img src="ADDON_PUBLIC/diy_t/{$info.2}"
+        alt="{$info.0}" />
+        <h3 class="am-gallery-title" align="center">{$info.0}</h3>
+      </a>
+    </div>
+  </li>
+</volist>	
+</ul>
+  </div>
+</block>

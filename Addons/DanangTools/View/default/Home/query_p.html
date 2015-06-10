@@ -1,0 +1,113 @@
+<!--  统一风格  采用模板渲染 插件通用模板addons 默认已加载 请参考 Amaze UI的css框架 -->
+<extend name="Base/addons"/>
+<block name="title">{$Title}</block>
+<block name="footer">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="ADDON_PUBLIC/mobiscroll.custom-2.13.1.min.css" rel="stylesheet" type="text/css" />
+<script src="ADDON_PUBLIC/mobiscroll.custom-2.13.1.min.js" type="text/javascript"></script>
+
+
+<style type="text/css">
+body
+{
+background-image:url(ADDON_PUBLIC/viphome/bg.jpg);
+}
+.am-g
+{
+margin-top:10px;
+}
+.select ul .button-hover
+	{
+	background-color: #f37b1d;
+    border-color: #f37b1d;
+    color: #fff;
+	}
+	
+</style>
+
+<script>
+$(function(){
+    $('#doc-ipt-birthday-1').mobiscroll().date({
+        theme: 'mobiscroll',
+        lang: 'zh',
+        display: 'bottom',
+        mode: 'mixed'
+    });    
+    $('#show').click(function(){
+        $('#doc-ipt-birthday-1').mobiscroll('show'); 
+        return false;
+    });
+    $('#clear').click(function () {
+        $('#doc-ipt-birthday-1').mobiscroll('clear');
+        return false;
+    });
+});
+</script>
+
+<div class="am-g am-g-fixed blog-g-fixed " >
+<div class="am-panel am-panel-warning">
+ <div class="am-panel-hd">基本信息</div>  </main>
+<form class="am-form" method="post" action="__SELF__">
+  <fieldset>
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">姓名</label>
+      <input type="text" name="name" class="" value="{$info.name}" id="doc-ipt-email-1" placeholder="姓名">
+    </div>
+<label for="sex">性别</label>
+	<div class="select"> 
+<ul data-am-widget="gallery" class="am-gallery sm-block-grid-2
+  md-block-grid-2 lg-block-grid-2 am-gallery-overlay" style="margin:-10px;" data-am-gallery="{ pureview: false }">
+<li>
+      <label>
+        <input style="opacity: 0;" type="radio"  value="1" id="sex" name="sex" <eq name="info['sex']" value="1">checked</eq>>
+		<span class="am-btn am-btn-default">男</span>
+      </label>
+</li>
+<li>
+      <label>
+		<input style="opacity: 0;" type="radio"  value="0" id="sex"  name="sex"<eq name="info['sex']" value="0">checked</eq>>
+		<span class="am-btn am-btn-default">女</span>
+      </label>
+</li>
+</ul>
+</div>
+
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">出生日期</label>
+      <input type="text" class="" name="birthday" id="doc-ipt-birthday-1" value="{$info['birthday']|date='Y-m-d',###}" placeholder="出生日期">
+    </div>
+
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">护照号</label>
+      <input type="text" class="" name="passport" id="doc-ipt-email-1" value="{$info.passport}" placeholder="护照号">
+    </div>
+
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">移动电话</label>
+      <input type="text" class="" name="tel" id="doc-ipt-email-1" value="{$info.tel}" placeholder="移动电话">
+    </div>
+
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">座机</label>
+      <input type="text" class="" name="phone" id="doc-ipt-email-1" value="{$info.phone}" placeholder="座机">
+    </div>
+
+    <div class="am-form-group">
+      <label for="doc-ipt-email-1">邮箱</label>
+      <input type="email" class="" name="email" id="doc-ipt-email-1" value="{$info.email}" placeholder="邮箱">
+    </div>
+    <p><button type="submit" class="am-btn am-btn-primary am-btn-block">完成预约</button></p>
+  </fieldset>
+</form>
+</div>
+</div>
+<script>
+ $(document).ready(function(){
+$(".select ul li span").click(function(){
+	$(".select ul li span").removeClass('button-hover');
+  $(this).addClass('button-hover');
+});
+ });
+ </script>
+</block>
+

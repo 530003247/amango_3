@@ -1,0 +1,70 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title cf">
+    <h2>设置Vip规则</h2>
+	</div>
+	<form action="{:addons_url('DanangTools://DanangTools/diyviprules')}" class="form-horizontal" method="post">
+			       <div class="form-item cf">
+					<label class="item-label">
+						Vip规则:<span class="check-tips">自由定义VIP守则，支持html自由排版</span></label>
+                        {:W('Formfields/show', array(array('type'=>'editor','name'=>'viprules'),$viprules,'edit'))}
+					</div>
+		<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+		<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+	</form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function() {
+            //搜索功能
+            $("#search").click(function() {
+                var url = $(this).attr('url');
+                var query = $('.search-form').find('input').serialize();
+                query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+                query = query.replace(/^&/g, '');
+                if (url.indexOf('?') > 0) {
+                    url += '&' + query;
+                } else {
+                    url += '?' + query;
+                }
+                window.location.href = url;
+            });
+            //回车搜索
+            $(".search-input").keyup(function(e) {
+                if (e.keyCode === 13) {
+                    $("#search").click();
+                    return false;
+                }
+            });
+            //导航高亮
+            highlight_subnav('{:U('Addons/adminList',array('name'=>'DanangTools'))}');
+            //点击排序
+        	$('.list_sort').click(function(){
+        		var url = $(this).attr('url');
+        		var ids = $('.ids:checked');
+        		var param = '';
+        		if(ids.length > 0){
+        			var str = new Array();
+        			ids.each(function(){
+        				str.push($(this).val());
+        			});
+        			param = str.join(',');
+        		}
+
+        		if(url != undefined && url != ''){
+        			window.location.href = url + '/ids/' + param;
+        		}
+        	});
+        });
+//排序方法
+function sort(id,num){
+    $.get('{:U("Keywordview/sort")}', { id: id,num:num }, function(jsondata){
+		var return_data  = eval(jsondata);
+		$("#7_"+id).attr('value', return_data);
+		location.reload();
+	}); 
+}
+    </script>
+</block>
