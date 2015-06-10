@@ -1688,15 +1688,15 @@ CREATE TABLE IF NOT EXISTS `amango_member` (
   `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态'
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 --
 -- 转存表中的数据 `amango_member`
 --
 
 INSERT INTO `amango_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'CDLADMIN', 0, '0000-00-00', '', 200, 105, 0, 1419440702, 2869468361, 1433600776, 1),
-(34, 'xiangang', 0, '0000-00-00', '', 100, 48, 0, 0, 606975542, 1422934437, 1);
+(1, 'Amango', 0, '0000-00-00', '', 200, 105, 0, 1419440702, 2869468361, 1433600776, 1),
+(34, 'amango', 0, '0000-00-00', '', 100, 48, 0, 0, 606975542, 1422934437, 1);
 
 -- --------------------------------------------------------
 
