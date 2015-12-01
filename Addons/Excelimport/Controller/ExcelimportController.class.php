@@ -193,6 +193,7 @@ sql;
 		$newrules['weixinprx'] = empty($head[0]) ? ',' : $head[0];
 		$newrules['modeltype'] = (strtolower($head[1])=='sql') ? 'sql' : 'safe';
         $newrules['logic']     = (strtolower($head[2])=='or') ? 'or' : 'and';
+        $newrules['results']   = (is_numeric($head[3])&&!empty($head[3])) ? $head[3] : 1;
         //去除头部为下面合并
         array_shift($rulesparam);
 		if($newrules['modeltype']=='sql'){
@@ -247,7 +248,7 @@ sql;
 	protected function configparse($rules){
         $arrrules     = unserialize($rules);
         $stringfields = '';
-        $string   = "weixin:".$arrrules['weixinprx'].'|'.$arrrules['modeltype'].'|'.$arrrules['logic'];
+        $string   = "weixin:".$arrrules['weixinprx'].'|'.$arrrules['modeltype'].'|'.$arrrules['logic'].'|'.$arrrules['results'];
         if($arrrules['modeltype']=='safe'){
 	        foreach ($arrrules['condition'] as $key => $value) {
 	        	$stringfields .= "\n".$key.":".implode('|', $value);

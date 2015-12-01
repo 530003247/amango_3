@@ -39,14 +39,19 @@ return trim($text);
 		} else {
 			//配置查询参数
 			foreach ($rules['condition'] as $key => $value) {
-				$condition[$key] = array($value[0],($value[1]=='SELF') ? $parxuehao[$conditionnum] : $value[1]);
+				if($value[0]=='like'){
+					$Cvalue = str_replace('SELF', $parxuehao[$conditionnum], $value[1]);
+				} else {
+					$Cvalue = ($value[1]=='SELF') ? $parxuehao[$conditionnum] : $value[1];
+				}
+				$condition[$key] = array($value[0],$Cvalue);
 				$conditionnum++;
 			}
 			$table_info = M('addonsexcel')->where(array('id'=>$fir['tableid']))->field('tablename,fileds')->find();
 			//数据表名
 			$tablename  = str_replace(C('DB_PREFIX'), '', $table_info['tablename']);
 			//读取记录数
-			$info       = M($tablename)->where($condition)->field($table_info['fileds'])->select();
+			$info       = M($tablename)->where($condition)->field($table_info['fileds'])->limit($rules['results'])->select();
             if(empty($info)){
                 $this->error("亲,暂无查询到与".$xuehao."相关的信息");
             } else {
