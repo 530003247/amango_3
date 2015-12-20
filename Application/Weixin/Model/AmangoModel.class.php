@@ -100,6 +100,7 @@ class AmangoModel {
 * @return array 
 */
     public function response($type,$content){
+
         //基础处理
         $respondeinfo = array();
         $respondeinfo = $this->setParam($type,$content);
@@ -110,6 +111,7 @@ class AmangoModel {
 
                 $this->responseFactory($this->type,$this->detail,$this->originalxml,$this->denytag);
             }
+
                 $this->display($this->type,$this->originalxml);
     }
 
@@ -292,6 +294,7 @@ class AmangoModel {
     */
     public function display($type,$xmlinfo) {
         $xmlinfo = empty($this->xmlinfo) ? $xmlinfo : $this->xmlinfo;
+
         $type    = empty($this->type) ? $type : $this->type;
         session('ReplyType',$type);
         //TODO  激活前行为 暂不启用
@@ -300,6 +303,7 @@ class AmangoModel {
         $xmlinfo = $this->completeInfo($type,$this->denytag,$xmlinfo);
 
         $xml = (false!==stripos($xmlinfo,'ToUserName')||false!==stripos($xmlinfo,'MsgType')) ? $xmlinfo : $this->completeHead($type,$xmlinfo).$xmlinfo.self::XMLEND;
+
         // $xmlhead = self::completeHead($type,$xmlinfo);
         // $xml     = $xmlhead.$xmlinfo.self::XMLEND;
         hook('weixin_end',&$xml);
@@ -340,10 +344,12 @@ class AmangoModel {
             }
         }
             $contentStr = preg_replace_callback("/(<amango:[^>]+>)/","xml_parse_tags",$contentStr);
+
             //清除 未解析标签-
             $preg = '/<amango:[^>]+>/';
             //通用字符转义
             $content = escape_common(preg_replace($preg,'', $contentStr));
+
             //emoji表情处理
             return emoji($content);
     }

@@ -15,7 +15,7 @@
 function xml_parse_tags($matches) {
     $taglist = array();
     $taglist = session('AMANGO_PARSETAGS');
-        preg_match('/(?<=<amango:)[^>]+(?=>)/', $matches[1],$tag_name);
+        preg_match('/(?<=<amango:)[^>]+(?=>)/', $matches,$tag_name);
         $tagname = str_replace('tag', '', $tag_name[0]);
         $tagitem = $taglist[$tagname];
         if(empty($tagitem)){
