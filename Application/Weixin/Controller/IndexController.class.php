@@ -21,7 +21,7 @@ class IndexController{
 	    public function __construct() {
 	        //判断hash是否存在
 	        if(empty($_GET["hash"])){
-	            echo '#10000非法请求';
+	            echo '#10000非法请求';die;
 	        }
 	        G('begin');
 	        $info = S('Accountinfo');
@@ -55,7 +55,7 @@ class IndexController{
 	            //预处理行为
 	            hook('weixin_begin');
 	        } else {
-	            echo '这是普通请求';
+	            echo '这里是微信请求的接口地址，请将本地址填写的微信的TOKEN请求地址';die;
 	        }
 	    }
 		public function index(){
