@@ -33,7 +33,7 @@ class IndexController{
 	        $info['Weixin_trace'] = false;
 	        //判断hash是否存在
 	        if(empty($info)){
-	            echo '#10001账号不存在';
+	            echo '#10001账号不存在';die;
 	        } else {
 	        	$this->Account_info   = $info;
 	        }
