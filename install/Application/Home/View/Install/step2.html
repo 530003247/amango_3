@@ -1,0 +1,65 @@
+<extend name="Public/base"/>
+
+<block name="header">
+    <li class="active"><a href="javascript:;">安装协议</a></li>
+    <li class="active"><a href="javascript:;">环境检测</a></li>
+    <li class="active"><a href="javascript:;">创建数据库</a></li>
+    <li><a href="javascript:;">安装</a></li>
+    <li><a href="javascript:;">完成</a></li>
+</block>
+
+<block name="body">
+    <?php
+        defined('SAE_MYSQL_HOST_M') or define('SAE_MYSQL_HOST_M', '127.0.0.1');
+        defined('SAE_MYSQL_HOST_M') or define('SAE_MYSQL_PORT', '3306');
+    ?>
+    <h1>创建数据库</h1>
+    <form action="__SELF__" method="post" target="_self">
+        <div class="create-database" style="margin-left: 35%;">
+            <div>
+                <select name="db[]">
+                    <option>mysqli</option>
+	                <option selected>mysql</option>
+                </select>
+                <span>数据库连接类型</span>
+            </div>
+            <div>
+                <input type="text" name="db[]" value="<defined name='SAE_MYSQL_HOST_M'>{$Think.const.SAE_MYSQL_HOST_M}<else/>127.0.0.1</defined>">
+                : <input type="text" name="db[]" style="width:35px;" value="<defined name='SAE_MYSQL_PORT'>{$Think.const.SAE_MYSQL_PORT}<else/>3306</defined>">
+                <span>数据库服务器IP，一般为127.0.0.1:3306</span>
+            </div>
+            <div>
+                <input type="text" name="db[]" value="<defined name='SAE_MYSQL_DB'>{$Think.const.SAE_MYSQL_DB}</defined>">
+                <span>数据库名</span>
+            </div>
+            <div>
+                <input type="text" name="db[]" value="<defined name='SAE_MYSQL_USER'>{$Think.const.SAE_MYSQL_USER}</defined>">
+                <span>数据库用户名</span>
+            </div>
+            <div>
+                <input type="password" name="db[]" value="<defined name='SAE_MYSQL_PASS'>{$Think.const.SAE_MYSQL_PASS}</defined>">
+                <span>数据库密码</span>
+            </div>
+            <div>
+                <input type="text" name="db[]" value="amango_">
+                <span>数据表前缀</span>
+            </div>
+        </div>
+        <hr>
+        <div class="create-database">
+            <div>
+                <span>初始账号:</span><input type="text" name="admin[]" value="{$randadmin}">
+                <span>初始密码:</span><input type="text" name="admin[]" value="{$randkey}">
+                <span>确认密码:</span><input type="password" name="admin[]" value="{$randkey}">
+            </div>
+            <div>
+                <span>管理邮箱:</span><input type="text" name="admin[]" value="xxxxxxx@qq.com">
+            </div>
+        </div>
+    </form>
+</block>
+
+<block name="footer">
+    <a class="btn btn-success btn-large" href="{:U('Install/step1')}">上一步</a>
+    <button id="submit" type="button" class="btn btn-primary btn-large" onclick="$('form').submit();return false;">下一步</button>
+</block>

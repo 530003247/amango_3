@@ -48,9 +48,10 @@ class IndexController{
 	            session('from',$wechatinfo['fromusername']);
 	            session('openid',$wechatinfo['fromusername']);
 	            session('to',$wechatinfo['tousername']);
-	            //过滤器行为
-	            hook('weixin_begin_filter',&$wechatinfo);
-	            global $_W;
+                //过滤器行为
+	            hook('weixin_begin_filter',$wechatinfo);
+
+                global $_W;
 	            $_W = $wechatinfo;
 	            //预处理行为
 	            hook('weixin_begin');
@@ -59,13 +60,14 @@ class IndexController{
 	        }
 	    }
 		public function index(){
-			//判断是否存在模式锁定
-			global $_W;
-			$event     = empty($_W['event'])?self::discrevent($_W['msgtype']):$_W['event'];
-			//新增芒果自定义参数 user_post
+            //判断是否存在模式锁定
+            global $_W;
+            $event     = empty($_W['event'])?self::discrevent($_W['msgtype']):$_W['event'];
+            //新增芒果自定义参数 user_post
 			$_W['post']  = ucfirst(strtolower($event));
 			$lastmodel = get_line_model();
 			$crosstime = time()-$lastmodel[1];
+
 			if(!empty($lastmodel[0])&&$crosstime<=300){
 				$addonparam = explode('/', $lastmodel[0]);
 				defined ( 'AMANGO_ADDON_NAME' )   or define ( 'AMANGO_ADDON_NAME', ucfirst($addonparam[0]));
@@ -76,10 +78,12 @@ class IndexController{
 			} else {
 				//是否是通用请求
 				if(in_array($event, $this->Common_request)){
+				    //获取 请求类型含有的回复条数
 	                $keyword_count = get_posttype_nums($_W['msgtype']);
 	                if ($keyword_count == 0){
 	                	Reply::trace('Sorry!查询到0条有关【'.$_W['msgtype'].'】类型的请求');
 	                }
+	                //匹配关键词
                     $preg_keword = get_keyword_match(true);
                     if(empty($preg_keword['id'])){
                         Reply::trace('查询不到关键词哦~');
@@ -99,7 +103,7 @@ class IndexController{
 			//TODO 此处 若腾讯新出接口  可以增加数组新元素
 			// if(file_exists(APP_PATH.'Common/Factory/'.ucfirst($event).'Factory.class.php')){
 			// }
-			$factory_event = array_merge(Reply::getResponseType(),$this->event_safe);
+            $factory_event = array_merge(Reply::getResponseType(),$this->event_safe);
 
             if(in_array($event, $factory_event)){
             	return $event;

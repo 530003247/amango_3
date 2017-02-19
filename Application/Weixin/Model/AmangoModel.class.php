@@ -100,18 +100,13 @@ class AmangoModel {
 * @return array 
 */
     public function response($type,$content){
-
         //基础处理
-        $respondeinfo = array();
         $respondeinfo = $this->setParam($type,$content);
-
             if($this->static!=1){
                 //关闭TAG显示隐藏
                 $this->denytag = $respondeinfo['denytag_keyword'];
-
                 $this->responseFactory($this->type,$this->detail,$this->originalxml,$this->denytag);
             }
-
                 $this->display($this->type,$this->originalxml);
     }
 
@@ -306,7 +301,7 @@ class AmangoModel {
 
         // $xmlhead = self::completeHead($type,$xmlinfo);
         // $xml     = $xmlhead.$xmlinfo.self::XMLEND;
-        hook('weixin_end',&$xml);
+        hook('weixin_end',$xml);
         echo $xml;
         //个人菜单   锁定
         if($this->clickmodel>0){

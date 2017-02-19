@@ -1,0 +1,566 @@
+[ 2017-02-19T12:44:36+08:00 ] 101.226.103.59 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000279s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000381s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000072s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000138s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:45:42+08:00 ] 117.28.171.254 /
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000249s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000349s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000042s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000080s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\AmangothemeController::init_config(), called in /data/wwwroot/www.amango.net/Application/Home/Controller/HomeController.class.php on line 40 and defined /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 78 行.
+NOTIC: [8] Undefined variable: modulename /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 88 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `amango_account` [ RunTime:0.000769s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` = 'default' ) LIMIT 1   [ RunTime:0.000273s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` <> 'default' )  [ RunTime:0.000212s ]
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000560s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000166s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000617s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`digest` DESC,`id` DESC  [ RunTime:0.000741s ]
+NOTIC: [8] Undefined variable: contentStr /data/wwwroot/www.amango.net/Application/Common/Common/laravel.php 第 48 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/default/Public/footer.html): failed to open stream: No such file or directory /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Template.class.php 第 703 行.
+SQL: SHOW COLUMNS FROM `amango_addons` [ RunTime:0.000599s ]
+SQL: SELECT * FROM `amango_addons` WHERE ( `status` = 1 ) AND ( `has_profile` = 1 )  [ RunTime:0.000072s ]
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/ThinkPHP/Library/OT/TagLib/Amango.class.php 第 42 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000201s ]
+NOTIC: [8] Undefined variable: HideFastmenu /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 25 行.
+SQL: SHOW COLUMNS FROM `amango_channel` [ RunTime:0.000677s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target`,`iconurl` FROM `amango_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000086s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 74 行.
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000085s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,4   [ RunTime:0.000495s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000077s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000403s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000082s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000556s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 42 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000062s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 48 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000059s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 52 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000052s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 53 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 59 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000053s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000026s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.012531s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002085s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002125s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000041s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000081s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 43 ) LIMIT 1   [ RunTime:0.000133s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000089s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 25 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000025s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.015474s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.001828s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000909s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.002695s ]
+NOTIC: [2] Missing argument 4 for Common\Api\DocumentApi::get_position() /data/wwwroot/www.amango.net/Application/Common/Api/DocumentApi.class.php 第 112 行.
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000677s ]
+SQL: SELECT `pid` FROM `amango_category` WHERE ( `id` = 42 ) LIMIT 1   [ RunTime:0.000085s ]
+SQL: SHOW COLUMNS FROM `amango_document_article` [ RunTime:0.000354s ]
+SQL: SELECT * FROM `amango_document` WHERE ( `status` = 1 ) AND ( `category_id` = 42 ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY level desc,create_time desc LIMIT 4   [ RunTime:0.000418s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 86 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 189 ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 101 ) LIMIT 1   [ RunTime:0.000093s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 123 ) LIMIT 1   [ RunTime:0.000063s ]
+NOTIC: [8] Undefined variable: accountsub /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 170 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005863s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000909s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.006741s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000078s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000126s ]
+
+[ 2017-02-19T12:45:43+08:00 ] 117.28.171.254 /0
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000246s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000322s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000085s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\AmangothemeController::init_config(), called in /data/wwwroot/www.amango.net/Application/Home/Controller/HomeController.class.php on line 40 and defined /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 78 行.
+NOTIC: [8] Undefined variable: modulename /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 88 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `amango_account` [ RunTime:0.000544s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` = 'default' ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` <> 'default' )  [ RunTime:0.000077s ]
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000524s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000162s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000572s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`digest` DESC,`id` DESC  [ RunTime:0.000301s ]
+NOTIC: [8] Undefined variable: contentStr /data/wwwroot/www.amango.net/Application/Common/Common/laravel.php 第 48 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/default/Public/footer.html): failed to open stream: No such file or directory /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Template.class.php 第 703 行.
+SQL: SHOW COLUMNS FROM `amango_addons` [ RunTime:0.000645s ]
+SQL: SELECT * FROM `amango_addons` WHERE ( `status` = 1 ) AND ( `has_profile` = 1 )  [ RunTime:0.000084s ]
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/ThinkPHP/Library/OT/TagLib/Amango.class.php 第 42 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000121s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000189s ]
+NOTIC: [8] Undefined variable: HideFastmenu /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 25 行.
+SQL: SHOW COLUMNS FROM `amango_channel` [ RunTime:0.000706s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target`,`iconurl` FROM `amango_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000079s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 74 行.
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000119s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000073s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,4   [ RunTime:0.000087s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000079s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000068s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000085s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000558s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 42 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 48 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000064s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 52 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 53 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000058s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 59 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000065s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000028s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.011772s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002201s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002242s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000042s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000066s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 43 ) LIMIT 1   [ RunTime:0.000152s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000103s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 25 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000028s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.015218s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002102s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001113s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.003189s ]
+NOTIC: [2] Missing argument 4 for Common\Api\DocumentApi::get_position() /data/wwwroot/www.amango.net/Application/Common/Api/DocumentApi.class.php 第 112 行.
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000669s ]
+SQL: SELECT `pid` FROM `amango_category` WHERE ( `id` = 42 ) LIMIT 1   [ RunTime:0.000084s ]
+SQL: SHOW COLUMNS FROM `amango_document_article` [ RunTime:0.000401s ]
+SQL: SELECT * FROM `amango_document` WHERE ( `status` = 1 ) AND ( `category_id` = 42 ) AND ( `create_time` < 1487479542 ) AND ( deadline = 0 OR deadline > 1487479542 ) ORDER BY level desc,create_time desc LIMIT 4   [ RunTime:0.000120s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 86 ) LIMIT 1   [ RunTime:0.000085s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 189 ) LIMIT 1   [ RunTime:0.000079s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 101 ) LIMIT 1   [ RunTime:0.000071s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 123 ) LIMIT 1   [ RunTime:0.000070s ]
+NOTIC: [8] Undefined variable: accountsub /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 170 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.006028s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001113s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.007115s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000054s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000091s ]
+
+[ 2017-02-19T12:46:07+08:00 ] 101.226.103.62 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000218s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000312s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000081s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:46:08+08:00 ] 101.226.103.59 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000289s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:47:08+08:00 ] 101.226.103.59 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000280s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000059s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000109s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:47:20+08:00 ] 101.226.103.63 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000283s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000386s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000055s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000110s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:47:35+08:00 ] 101.226.103.60 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000350s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000476s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000084s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:47:45+08:00 ] 101.226.103.61 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000337s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000436s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000115s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:48:03+08:00 ] 101.226.103.60 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000309s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000119s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:48:13+08:00 ] 101.226.103.60 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000234s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000327s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000044s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000079s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:48:45+08:00 ] 101.226.103.60 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000206s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000275s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000040s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000076s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:48:56+08:00 ] 101.226.103.62 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000204s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000290s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000039s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000075s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:49:10+08:00 ] 101.226.103.62 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000209s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000301s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000131s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+
+[ 2017-02-19T12:49:15+08:00 ] 101.226.103.60 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000317s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000444s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000122s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+INFO: [ weixin_begin_filter ] --START--
+INFO: Run Weixin\Behavior\WeixinFilter [ RunTime:0.000175s ]
+INFO: [ weixin_begin_filter ] --END-- [ RunTime:0.000256s ]
+
+[ 2017-02-19T12:49:55+08:00 ] 101.226.103.61 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000298s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000121s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000204s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+INFO: [ weixin_begin_filter ] --START--
+INFO: Run Weixin\Behavior\WeixinFilter [ RunTime:0.000241s ]
+INFO: [ weixin_begin_filter ] --END-- [ RunTime:0.000335s ]
+
+[ 2017-02-19T12:50:00+08:00 ] 101.226.103.62 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000295s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000067s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000113s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+INFO: [ weixin_begin_filter ] --START--
+INFO: Run Weixin\Behavior\WeixinFilter [ RunTime:0.000157s ]
+INFO: [ weixin_begin_filter ] --END-- [ RunTime:0.000218s ]
+
+[ 2017-02-19T12:54:51+08:00 ] 101.226.103.63 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000245s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000334s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000125s ]
+NOTIC: [8] Undefined index: echostr /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: signature /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: timestamp /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+NOTIC: [8] Undefined index: nonce /data/wwwroot/www.amango.net/Application/Weixin/Controller/IndexController.class.php 第 44 行.
+INFO: [ weixin_begin_filter ] --START--
+INFO: Run Weixin\Behavior\WeixinFilter [ RunTime:0.000178s ]
+INFO: [ weixin_begin_filter ] --END-- [ RunTime:0.000218s ]
+INFO: [ weixin_begin ] --START--
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `amango_weixinmember` [ RunTime:0.000684s ]
+SQL: SHOW COLUMNS FROM `amango_followercate` [ RunTime:0.000362s ]
+SQL: SELECT Weixinmember.id AS id,Weixinmember.fromusername AS fromusername,Weixinmember.nickname AS nickname,Weixinmember.sex AS sex,Weixinmember.birthday AS birthday,Weixinmember.qq AS qq,Weixinmember.follow AS follow,Weixinmember.status AS status,Weixinmember.regtime AS regtime,Weixinmember.lasttime AS lasttime,Weixinmember.lastkeyword AS lastkeyword,Weixinmember.lastmodel AS lastmodel,Weixinmember.ucmember AS ucmember,Weixinmember.ucpassword AS ucpassword,Weixinmember.ucusername AS ucusername,Weixinmember.cate_group AS cate_group,Weixinmember.lastclick AS lastclick,Weixinmember.location AS location,Weixinmember.language AS language,Weixinmember.city AS city,Weixinmember.province AS province,Weixinmember.country AS country,Weixinmember.headimgurl AS headimgurl,Weixinmember.unionid AS unionid,Weixinmember.remark AS remark,Weixinmember.privilege AS privilege,Weixinmember.score AS score,Weixinmember.account_union AS account_union,Followercate.status AS followercate_status,Followercate.followercate_title AS followercate_title FROM amango_weixinmember Weixinmember  JOIN amango_followercate Followercate ON Weixinmember.cate_group=Followercate.followercate_title WHERE ( Weixinmember.fromusername = 'dasdasdas' ) LIMIT 1   [ RunTime:0.000134s ]
+SQL: UPDATE `amango_weixinmember` SET `account_union`='dasdasdas' WHERE ( `fromusername` = 'dasdasdas' ) [ RunTime:0.000193s ]
+SQL: SHOW COLUMNS FROM `amango_credits` [ RunTime:0.000344s ]
+SQL: SELECT * FROM `amango_weixinmember` WHERE ( `id` = 419 ) LIMIT 1   [ RunTime:0.000086s ]
+SQL: SHOW COLUMNS FROM `amango_weixinmember` [ RunTime:0.000471s ]
+SQL: SELECT `score` FROM `amango_weixinmember` WHERE ( `id` = 419 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `amango_followercate` [ RunTime:0.000401s ]
+SQL: SELECT `followercate_title` FROM `amango_followercate` WHERE ( `status` = 1 ) AND ( `start_score` <= '200' ) AND ( `end_score` > '200' ) ORDER BY start_score asc LIMIT 1   [ RunTime:0.000063s ]
+INFO: Run Weixin\Behavior\WeixinInit [ RunTime:0.006178s ]
+INFO: [ weixin_begin ] --END-- [ RunTime:0.006210s ]
+
+[ 2017-02-19T12:55:36+08:00 ] 138.197.111.123 /
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000226s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000313s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000047s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000093s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\AmangothemeController::init_config(), called in /data/wwwroot/www.amango.net/Application/Home/Controller/HomeController.class.php on line 40 and defined /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 78 行.
+NOTIC: [8] Undefined variable: modulename /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 88 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `amango_account` [ RunTime:0.000623s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` = 'default' ) LIMIT 1   [ RunTime:0.000130s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` <> 'default' )  [ RunTime:0.000086s ]
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000553s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000170s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000541s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1487480136 ) AND ( deadline = 0 OR deadline > 1487480136 ) ORDER BY `level` DESC,`digest` DESC,`id` DESC  [ RunTime:0.000766s ]
+NOTIC: [8] Undefined variable: contentStr /data/wwwroot/www.amango.net/Application/Common/Common/laravel.php 第 48 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/default/Public/footer.html): failed to open stream: No such file or directory /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Template.class.php 第 703 行.
+SQL: SHOW COLUMNS FROM `amango_addons` [ RunTime:0.000759s ]
+SQL: SELECT * FROM `amango_addons` WHERE ( `status` = 1 ) AND ( `has_profile` = 1 )  [ RunTime:0.000142s ]
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/ThinkPHP/Library/OT/TagLib/Amango.class.php 第 42 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000109s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000171s ]
+NOTIC: [8] Undefined variable: HideFastmenu /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 25 行.
+SQL: SHOW COLUMNS FROM `amango_channel` [ RunTime:0.000565s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target`,`iconurl` FROM `amango_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000074s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 74 行.
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000077s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487480136 ) AND ( deadline = 0 OR deadline > 1487480136 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,4   [ RunTime:0.000399s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000077s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000069s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487480136 ) AND ( deadline = 0 OR deadline > 1487480136 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000355s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000079s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000475s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 42 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 48 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000054s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 52 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000051s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 53 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 59 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000049s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000026s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.011126s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002081s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002127s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000052s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000086s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 43 ) LIMIT 1   [ RunTime:0.000177s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000072s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 25 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000025s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.014044s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.001839s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000932s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.002747s ]
+NOTIC: [2] Missing argument 4 for Common\Api\DocumentApi::get_position() /data/wwwroot/www.amango.net/Application/Common/Api/DocumentApi.class.php 第 112 行.
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000607s ]
+SQL: SELECT `pid` FROM `amango_category` WHERE ( `id` = 42 ) LIMIT 1   [ RunTime:0.000069s ]
+SQL: SHOW COLUMNS FROM `amango_document_article` [ RunTime:0.000367s ]
+SQL: SELECT * FROM `amango_document` WHERE ( `status` = 1 ) AND ( `category_id` = 42 ) AND ( `create_time` < 1487480136 ) AND ( deadline = 0 OR deadline > 1487480136 ) ORDER BY level desc,create_time desc LIMIT 4   [ RunTime:0.000424s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 86 ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 189 ) LIMIT 1   [ RunTime:0.000080s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 101 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 123 ) LIMIT 1   [ RunTime:0.000058s ]
+NOTIC: [8] Undefined variable: accountsub /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 170 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.005719s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000932s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.006610s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000058s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000095s ]
+
+[ 2017-02-19T12:55:38+08:00 ] 138.197.111.123 /0
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000279s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000102s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\AmangothemeController::init_config(), called in /data/wwwroot/www.amango.net/Application/Home/Controller/HomeController.class.php on line 40 and defined /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 78 行.
+NOTIC: [8] Undefined variable: modulename /data/wwwroot/www.amango.net/Application/Home/Controller/AmangothemeController.class.php 第 88 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Db/Driver/Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `amango_account` [ RunTime:0.000663s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` = 'default' ) LIMIT 1   [ RunTime:0.000107s ]
+SQL: SELECT * FROM `amango_account` WHERE ( `account_default` <> 'default' )  [ RunTime:0.000108s ]
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000598s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000161s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000537s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `create_time` < 1487480137 ) AND ( deadline = 0 OR deadline > 1487480137 ) ORDER BY `level` DESC,`digest` DESC,`id` DESC  [ RunTime:0.000792s ]
+NOTIC: [8] Undefined variable: contentStr /data/wwwroot/www.amango.net/Application/Common/Common/laravel.php 第 48 行.
+INFO: [ view_parse ] --START--
+NOTIC: [2] file_get_contents(./Application/Home/View/default/Public/footer.html): failed to open stream: No such file or directory /data/wwwroot/www.amango.net/ThinkPHP/Library/Think/Template.class.php 第 703 行.
+SQL: SHOW COLUMNS FROM `amango_addons` [ RunTime:0.000758s ]
+SQL: SELECT * FROM `amango_addons` WHERE ( `status` = 1 ) AND ( `has_profile` = 1 )  [ RunTime:0.000087s ]
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/ThinkPHP/Library/OT/TagLib/Amango.class.php 第 42 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000135s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+NOTIC: [8] Undefined variable: HideFastmenu /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 25 行.
+SQL: SHOW COLUMNS FROM `amango_channel` [ RunTime:0.000690s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target`,`iconurl` FROM `amango_channel` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.000095s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 74 行.
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000105s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000092s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487480137 ) AND ( deadline = 0 OR deadline > 1487480137 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,4   [ RunTime:0.000519s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000104s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000137s ]
+SQL: SELECT `id`,`uid`,`name`,`title`,`category_id`,`description`,`root`,`pid`,`model_id`,`type`,`position`,`link_id`,`cover_id`,`display`,`deadline`,`attach`,`view`,`comment`,`extend`,`level`,`create_time`,`update_time`,`status`,`denyuser`,`replylimit`,`replyunique`,`usertype`,`digest` FROM `amango_document` WHERE ( `status` = 1 ) AND ( `pid` = 0 ) AND ( `category_id` IN ('42','48','52','53','59') ) AND ( `create_time` < 1487480137 ) AND ( deadline = 0 OR deadline > 1487480137 ) ORDER BY `level` DESC,`id` DESC LIMIT 0,10   [ RunTime:0.000529s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000104s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000102s ]
+SQL: SHOW COLUMNS FROM `amango_document` [ RunTime:0.000672s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 42 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000106s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 48 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 52 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000066s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 53 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000067s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `amango_document` WHERE ( `category_id` = 59 ) AND ( `status` = 1 ) LIMIT 1   [ RunTime:0.000064s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.014479s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002844s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002909s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000052s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000101s ]
+SQL: SELECT `id`,`name`,`title`,`pid`,`sort`,`list_row`,`meta_title`,`keywords`,`description`,`template_index`,`template_lists`,`template_detail`,`template_edit`,`model`,`type`,`link_id`,`allow_publish`,`display`,`reply`,`reply_show`,`check`,`reply_model`,`extend`,`create_time`,`update_time`,`status`,`icon` FROM `amango_category` WHERE ( `id` = 43 ) LIMIT 1   [ RunTime:0.000159s ]
+SQL: SELECT `id`,`name`,`pid`,`title`,`link_id`,`icon` FROM `amango_category` WHERE ( `status` = 1 ) ORDER BY sort  [ RunTime:0.000099s ]
+NOTIC: [8] Undefined index: _ /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 25 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data/wwwroot/www.amango.net/Application/Home/Widget/CategoryWidget.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplace [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.018347s ]
+INFO: Run Behavior\ParseTemplate [ RunTime:0.002349s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001179s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000011s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.003483s ]
+NOTIC: [2] Missing argument 4 for Common\Api\DocumentApi::get_position() /data/wwwroot/www.amango.net/Application/Common/Api/DocumentApi.class.php 第 112 行.
+SQL: SHOW COLUMNS FROM `amango_category` [ RunTime:0.000774s ]
+SQL: SELECT `pid` FROM `amango_category` WHERE ( `id` = 42 ) LIMIT 1   [ RunTime:0.000096s ]
+SQL: SHOW COLUMNS FROM `amango_document_article` [ RunTime:0.000357s ]
+SQL: SELECT * FROM `amango_document` WHERE ( `status` = 1 ) AND ( `category_id` = 42 ) AND ( `create_time` < 1487480137 ) AND ( deadline = 0 OR deadline > 1487480137 ) ORDER BY level desc,create_time desc LIMIT 4   [ RunTime:0.000417s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 86 ) LIMIT 1   [ RunTime:0.000091s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 189 ) LIMIT 1   [ RunTime:0.000102s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 101 ) LIMIT 1   [ RunTime:0.000088s ]
+SQL: SELECT * FROM `amango_document_article` WHERE ( `id` = 123 ) LIMIT 1   [ RunTime:0.000073s ]
+NOTIC: [8] Undefined variable: accountsub /data/wwwroot/www.amango.net/Runtime/Cache/Home/67b6ec5c1d364b0d9f622c0a86b8f8a7.php 第 170 行.
+INFO: Run Behavior\ParseTemplate [ RunTime:0.006922s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001179s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCache [ RunTime:0.000010s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.008062s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTrace [ RunTime:0.000068s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000117s ]
+
+[ 2017-02-19T12:56:50+08:00 ] 101.226.103.62 /Weixin/gh_d92043f64af1.html
+INFO: [ app_init ] --START--
+INFO: Run Common\Behavior\InitHook [ RunTime:0.000407s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000518s ]
+INFO: [ app_begin ] --START--
+INFO: Run Weixin\Behavior\WxReadHtmlCache [ RunTime:0.000063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000149s ]
+

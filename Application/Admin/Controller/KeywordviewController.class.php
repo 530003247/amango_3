@@ -332,7 +332,7 @@ class KeywordviewController extends AdminController {
             $lists = api('Category/get_category_list',array('cateid'=>I('cateid',0),'field'=>'l.id,l.title','order'=>'l.level DESC,l.id DESC'));
             $readfields = D('Flycloud')->where(array('data_type' => 'category', 'data_table'=>$_POST['cateid']))->find();
             if(empty($readfields)){
-                $this->ajaxReturn(array('status'=>0,'errmsg'=>"该分类下为绑定数据模型,无法读取详细信息,为了避免生成空图文\n请在云端中添加读取模型\n===步骤=====\n【数据聚合】->【本地模型】->【新增】\n===填写参数格式===\n模型名称:调用【当前分类的名称】\n类型:图文数据模型\n数据表名为:当前分类的名字"),'JSON');
+                $this->ajaxReturn(array('status'=>0,'errmsg'=>"该分类未绑定数据模型,无法生成图文消息\n请在【数据聚合】->【本地模型列表】->【新增】\n===填写参数格式===\n模型名称:调用【当前分类的名称】\n类型:图文数据模型\n数据表名为:当前分类的名字"),'JSON');
             }
             // $options  = get_category(I('cateid',0));
             $newlist = array();

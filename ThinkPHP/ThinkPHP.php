@@ -88,6 +88,9 @@ if(!IS_CLI) {
     }
 }
 
+// 加载芒果核心
+include '../version.php';
+
 // 加载核心Think类
 require CORE_PATH.'Think'.EXT;
 // 应用初始化 

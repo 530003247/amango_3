@@ -87,7 +87,6 @@ class CategoryApi {
     //芒果   新增
     /* 根据ID获取分类分类下文章列表 */
     public static function get_category_list($cateid,$field,$order){
-            $cateid   = $cateid;
             $field    = empty($field) ? 'l.id,l.title' : $field;
             $order    = empty($order) ? 'l.level DESC,l.id DESC' : $order;
             $nowtime  = time();
@@ -104,16 +103,15 @@ class CategoryApi {
             return $lists;
     }
 
-    //芒果   新增   暂不采用联表查询  避免超时
     /* 获取分类下的 随机帖子  数目*/
     public static function get_category_rand($cateid,$field,$limit){
-            $cateid   = $cateid;
-            $newfield     = explode(',', $field);
-            $defaultfield = array('uid','name','title','description','cover_id','view','comment');
-               array_map(function($a) use($defaultfield, &$field){ 
-                                $fieldpre = in_array($a, $defaultfield) ? 'l.' : 'r.';
-                                $field    = str_replace($a, $fieldpre.$a, &$field);
-                         },$newfield);
+        $newfield     = explode(',', $field);
+        $defaultfield = array('uid','name','title','description','cover_id','view','comment');
+        array_map(function($a) use($defaultfield, &$field){
+            $fieldpre = in_array($a, $defaultfield) ? 'l.' : 'r.';
+            $field    = str_replace($a, $fieldpre.$a, $field);
+        },$newfield);
+
             $limit    = empty($limit) ? 1 : $limit;
             $nowtime  = time();
             $options  = get_category($cateid);
@@ -133,14 +131,13 @@ class CategoryApi {
     //芒果   新增   暂不采用联表查询  避免超时
     /* 获取分类下的 最新帖子  数目*/
     public static function get_category_news($cateid,$field,$limit){
-            $cateid   = $cateid;
             $newfield     = explode(',', $field);
             $defaultfield = array('uid','name','title','description','cover_id','view','comment');
-               array_map(function($a) use($defaultfield, &$field){ 
+               array_map(function($a) use($defaultfield, &$field){
                                 $fieldpre = in_array($a, $defaultfield) ? 'l.' : 'r.';
-                                $field    = str_replace($a, $fieldpre.$a, &$field);
+                                $field    = str_replace($a, $fieldpre.$a, $field);
                          },$newfield);
-            $limit    = empty($limit) ? 1 : $limit;
+        $limit    = empty($limit) ? 1 : $limit;
             $nowtime  = time();
             $options  = get_category($cateid);
             $prefix   = C('DB_PREFIX');
