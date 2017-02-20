@@ -18,13 +18,13 @@ location / {
 }
 
 ##Apache项目配置
-<IfModule mod_rewrite.c>
+“<IfModule mod_rewrite.c>
   Options +FollowSymlinks
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
-</IfModule>
+</IfModule>“
 
 ##安装说明
 * PHP > 5.3 && <5.6
