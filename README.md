@@ -5,6 +5,27 @@
 加入我们群吧 163556458
 [使用手册][http://www.amango.net/]
 
+##Nginx项目配置
+
+location / {
+ root /您的项目地址;
+ index index.html index.htm index.php;
+ if (!-e $request_filename) {
+ rewrite ^/index.php(.*)$ /index.php?s=$1 last;
+ rewrite ^(.*)$ /index.php?s=$1 last;
+ break;
+ }
+}
+
+##Apache项目配置
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>
+
 ##安装说明
 * PHP > 5.3 && <5.6
 * 安装地址：http://域名/install/ 安装完成记得删除该文件夹
