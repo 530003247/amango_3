@@ -7,23 +7,39 @@
 
 ##Nginx项目配置
 
-`location / {
- root /您的项目地址;
+`location / 
+ 
+ {
+
+root /您的项目地址;
+
  index index.html index.htm index.php;
+ 
  if (!-e $request_filename) {
+ 
  rewrite ^/index.php(.*)$ /index.php?s=$1 last;
+ 
  rewrite ^(.*)$ /index.php?s=$1 last;
+ 
  break;
+ 
  }
+ 
 }`
 
 ##Apache项目配置
 `<IfModule mod_rewrite.c>
+
   Options +FollowSymlinks
+  
   RewriteEngine On
+  
   RewriteCond %{REQUEST_FILENAME} !-d
+  
   RewriteCond %{REQUEST_FILENAME} !-f
+  
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+  
 </IfModule>`
 
 ##安装说明
